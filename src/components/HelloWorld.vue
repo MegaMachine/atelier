@@ -39,13 +39,18 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+<style lang="scss" scoped>
+@import '../assets/index.scss';
 h3 {
   margin: 40px 0 0;
 }
 ul {
   list-style-type: none;
   padding: 0;
+  background: $color-black;
+  li{
+    background: black;
+  }
 }
 li {
   display: inline-block;

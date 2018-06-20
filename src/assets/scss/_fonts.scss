@@ -1,0 +1,14 @@
+$font-dir: "../fonts/akzidenz/";
+
+@font-face {
+  font-family: 'AkzidenzGroteskPro-LightEx';
+  src: url('#?{$font-dir}AkzidenzGroteskPro-LightEx.eot');
+  src: url('#?{$font-dir}AkzidenzGroteskPro-LightEx.woff2') format('woff2'),
+       url('#?{$font-dir}AkzidenzGroteskPro-LightEx.woff') format('woff'),
+       url('#?{$font-dir}AkzidenzGroteskPro-LightEx.ttf') format('truetype'),
+       url('#?{$font-dir}AkzidenzGroteskPro-LightEx.svg#AkzidenzGroteskPro-LightEx') format('svg'),
+       url('#?{$font-dir}AkzidenzGroteskPro-LightEx.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+

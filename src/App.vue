@@ -1,29 +1,62 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-2">
+            <div class="header__logo">
+              <img src="assets/img/header/logo.png" alt="logo">
+            </div>
+          </div>
+          <div class="col-6">
+            <nav class="header__nav">
+              <router-link tag="a" to="/about"><span>про проект</span></router-link>
+              <router-link tag="a" to="/contacts"><span>контакти</span></router-link>
+              <a class="social fb" href="#"><span>a</span></a>
+              <a class="social inst" href="#"><span>a</span></a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
     <router-view/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<style lang="scss" >
+@import './assets/scss/index.scss';
+
+body,html,#app{
+  width: 100%;
+  height: 100%;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+html{
+  font-size: 16px;
+}
+#app{
+  background:url('assets/img/home-background.jpg') no-repeat center;
+}
+.row{
+  justify-content: space-between;
+  &:before,&:after{
+    display: none;
+  }
+}
+.header{
+  padding: 20px 0;
+  background: rgba(255,255,255,.4);
+  box-shadow: 0 0 30px 10px #000;
+  &__logo{
+    
+  }
+  &__nav{
+    display: flex;
+    justify-content: flex-end;
+    a{
+      padding: 0px 15px;
+      font-family: $font-a;
     }
   }
 }
+
 </style>
