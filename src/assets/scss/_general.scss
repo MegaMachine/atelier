@@ -1,0 +1,94 @@
+*{
+  font-family:$font-a;
+  color:$color-black-item-title;
+}
+html{
+  font-size:16px;
+  font-family: $font-a;
+}
+a{
+  &:focus,&:active,&:hover{
+    text-decoration: none;
+    color:$color-black-page-title;
+  }
+}
+body,html,#app,main,section{
+  width: 100%;
+  height: 100%;
+}
+.row{
+  &:before,&:after{
+    display: none;
+  }
+}
+
+ 
+ .page-title{
+   font-size: 2rem;
+   text-transform: uppercase;
+   color:$color-black-page-title;
+   text-align: center;
+ }
+ 
+ .price{
+   color:$color-price;
+ }
+ 
+ .description{
+   color:$color-black-item-title;
+   font-size: 1rem;
+ }
+ 
+ .size{
+   font-size: .875rem;
+   color:$color-black-item-title;
+ }
+ 
+ .filter-text{
+   font-size: 1.125rem;
+   color:$color-black-item-title;
+ }
+ 
+ .header-link{
+   font-size: 1rem;
+   color:$color-black-page-title;
+ }
+
+.v-select{
+  .dropdown-menu{
+    border: 1px solid rgba(60,60,60,.26) !important;
+    background: #efe9dd  !important;
+    border-top:none !important;
+    box-shadow: none !important;
+    overflow-y: auto !important;
+    li{
+      background:transparent !important;
+    }
+    & > .highlight{
+      &:hover,&:focus,&.active{
+        a{
+          background: black !important;
+          color: #fff;
+        }
+      }
+
+    }
+    & > .active{
+      a{
+        background: black;
+        color: #fff;
+      }
+    }
+  }
+  &.open{
+    border-bottom:none !important;
+  }
+}
+.v-select .dropdown-menu > .highlight > a {
+  /*
+   * required to override bootstrap 3's
+   * .dropdown-menu > li > a:hover {} styles
+   */
+  background: #5897fb;
+  color: #fff;
+}

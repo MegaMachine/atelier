@@ -1,7 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-import About from './views/About.vue'
+import About from './views/sections/About.vue'
+import Contacts from './views/sections/Contacts.vue'
+
+import Home from './views/sections/Home.vue'
+import Cloth from './views/sections/Cloth.vue'
+import Models from './views/sections/Models.vue'
+import FinishedGoods from './views/sections/FinishedGoods.vue'
+import PrivateCabinet from './views/sections/PrivateCabinet.vue'
 
 Vue.use(Router)
 
@@ -16,6 +22,31 @@ export default new Router({
       path: '/about',
       name: 'about',
       component: About
-    }
+    },
+    {
+      path: '/contacts',
+      name: 'contacts',
+      component: Contacts
+    },
+    {
+      path: '/models',
+      name: 'models',
+      component: Models
+    },
+    {
+      path:'/cloth',
+      name:'cloth',
+      component: Cloth
+    },
+    {
+      path: '/finished-goods',
+      name: 'finished-goods',
+      component: FinishedGoods
+    },
+    {
+      path: '/private-cabinet',
+      name: 'private-cabinet',
+      component: PrivateCabinet
+    },
   ]
 })
