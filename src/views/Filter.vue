@@ -32,15 +32,15 @@
     </div>
     <div class="filter__item select">
       <h2>Категорія</h2>
-      <v-select v-model="selected" :options="['foo','bar']"></v-select>
+      <v-select v-model="filter.category" :options="selectOptionsCategory"></v-select>
     </div>
     <div class="filter__item select">
-      <h2>Категорія</h2>
-      <v-select v-model="selected" :options="['foo','bar']"></v-select>
+      <h2>Тканина</h2>
+      <v-select v-model="filter.material" :options="selectOptionsMaterial"></v-select>
     </div>
     <div class="filter__item select">
-      <h2>Категорія</h2>
-      <v-select v-model="selected" :options="['foo','bar']"></v-select>
+      <h2 @click="conLog()">Розмір</h2>
+      <v-select v-model="filter.size" :options="selectOptionsSize"></v-select>
     </div>
   </div>
 </template>
@@ -50,7 +50,36 @@
     name: "app-filter",
     data() {
       return {
-        selected: null
+        filter: {
+          size: null,
+          material: null,
+          category: null,
+        }
+      }
+    },
+    props: {
+      material: Array,
+      size: Array,
+      category: Array
+    },
+    computed: {
+      selectOptionsSize() {
+        return this.size.map(g => ({
+          label: g.size.toString(),
+          value: g.id_size
+        }))
+      },
+      selectOptionsMaterial() {
+        return this.material.map(g => ({
+          label: g.material_name.toString(),
+          value: g.id_material
+        }))
+      },
+      selectOptionsCategory() {
+        return this.material.map(g => ({
+          label: g.category_name.toString(),
+          value: g.id_category
+        }))
       }
     }
   };
@@ -119,10 +148,11 @@
           background-image: url('./../assets/img/filter/season-rain.png');
         }
       }
-      &.select{
+      &.select {
         display: flex;
         flex-direction: column;
       }
     }
+
   }
 </style>

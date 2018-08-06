@@ -2,25 +2,30 @@
   <section-wrap sectionName="models" sectionTitle="Моделі" sectionContainer="container">
     <div class="row">
       <div class="col-md-3">
-        <app-filter></app-filter>
+        <app-filter
+        :size="filter.size"
+        :material="filter.material"></app-filter>
       </div>
       <div class="col-md-8 items">
         <div class="models__item__wrap" :key="item.id_good" v-for="(item) in items">
           <div class="models__item">
             <div class="models__item__img">
-              <img :src="item.photo1" alt="model">
+              <img :src="item.photos[0]" alt="model">
             </div>
             <div class="models__item__desc">
+              <div class="models__item__desc__name">
+                <p>{{item.good_name.ua}}</p>
+              </div>
               <div class="models__item__desc__price">
                 <h2>{{item.price}}
                   <span>grn</span>
                 </h2>
-                <div class="models__item__desc__text">
-                  <p>{{item.description}}</p>
-                </div>
-                <div class="models__item__desc__size">
-                  <span>{{item.size}}</span>
-                </div>
+              </div>
+              <div class="models__item__desc__text">
+                <p>{{item.description}}</p>
+              </div>
+              <div class="models__item__desc__size">
+                <span :key="size" v-for="size in item.size">{{size}}</span>
               </div>
               <div class="models__item__desc__detail">
                 <button>детальніше</button>
@@ -34,18 +39,18 @@
 </template>
 
 <script>
-
   import goods from "./../../data/goods.js";
+  import filter from "./../../data/filter.js";
   export default {
     name: 'models',
     data() {
       return {
         selected: null,
-        items:[],
+        items: goods,
+        filter,
       }
     },
   }
-
 </script>
 
 <style scoped lang="scss">
@@ -130,5 +135,4 @@
       }
     }
   }
-
 </style>
