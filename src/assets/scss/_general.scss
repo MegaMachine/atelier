@@ -12,9 +12,13 @@ a{
     color:$color-black-page-title;
   }
 }
+body{
+  background:#efe9dd;
+}
 body,html,#app,main,section{
   width: 100%;
-  height: 100%;
+  // min-height: 100%;
+  // height: 100%;
 }
 .row{
   &:before,&:after{

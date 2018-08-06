@@ -1,0 +1,109 @@
+{
+  "id_model": 1,
+  "model_name": "Сукня вузька з драпіровкою на ліфі",
+  "model_name_ru": "Платье узкое с драпировкой на лифе",
+  "model_name_en": "The dress is narrow with drapery on the lace",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet dolor eu elit aliquet fringilla. Vivamus rutrum consectetur placerat. Proin vel dui euismod magna dictum bibendum. Donec sodales sapien in orci laoreet, at iaculis urna tincidunt.",
+  "id_section": 1,
+  "burda_link": "https://burdastyle.ua/models/zhinocha-moda/sukni/suknya-vuzka-z-drapirovkoyu-na-lifi",
+  "category": 1,
+  "purpose": 13,
+  "contingent": 1,
+  "textile_spending": "2.1",
+  "lining": false,
+  "material_ids": [
+    7,
+    8,
+    9
+  ],
+  "photo1": "/static/media/models/burdastyle_suknya_vuzkogo_kroyu_118_1_2018.jpg",
+  "photo2": "/static/media/models/burdastyle_suknya_vuzkogo_kroyu_118_1_2018.png",
+  "photo3": "/static/media/models/burdastyle_suknya_vuzkogo_kroyu_118_1_2018_3.jpg",
+  "photo4": "/static/media/models/%D0%BF%D0%BB%D0%B0%D1%82%D1%82%D1%8F-%D0%BF%D1%80%D0%BE%D0%B7%D0%BE%D1%80%D0%B5-1_UywdkBK.png"
+}
+
+{
+  "id_good": 1,
+  "good_name": "Cукня 1",
+  "good_name_en": "Dress1",
+  "good_name_ru": "Платье 1",
+  "description": "",
+  "id_model": 1,
+  "article": "1",
+  "photo1": "/static/media/goods/burdastyle_suknya_vuzkogo_kroyu_118_1_2018.jpg",
+  "photo2": "/static/media/goods/burdastyle_suknya_vuzkogo_kroyu_118_1_2018_9AEbe97.jpg",
+  "photo3": "/static/media/goods/burdastyle_suknya_vuzkogo_kroyu_118_1_2018_LDTyeRe.jpg",
+  "season": 3,
+  "storage": true,
+  "price": "18000.00",
+  "size": [],
+  "material": [],
+  "contingent": 1
+}, {
+  "id_material": 7,
+  "material_name": "ЖАККАРД 3171/2017",
+  "material_name_ru": "ЖАККАРД 3171/2017",
+  "material_name_en": "ZAKKARD 3171/2017",
+  "price": "40.00",
+  "component": [
+    1,
+    2
+  ],
+  "width": "1.50",
+  "remain": "0.00",
+  "photo1": "/static/media/materials/3171-2017_cmszoom_width_2000_WTM_.JPG",
+  "photo2": "/static/media/materials/3171-2017_cmszoom_width_2000_WTM__K6ePwfA.JPG",
+  "photo3": "/static/media/materials/3171-2017_cmszoom_width_2000_WTM__ZAMNx9m.JPG",
+  "photo4": "/static/media/materials/3171-2017_cmszoom_width_2000_WTM1_.jpg"
+}, {
+  "id_component": 2,
+  "component_name": "Поліестер",
+  "component_name_en": "Poliester",
+  "component_name_ru": "Полиестер",
+  "component_count": "50%"
+}
+
+
+{
+  "id_category": 1,
+  "category_name": "Сукні",
+  "category_name_en": "Dresses",
+  "category_name_ru": "Платья"
+},
+
+
+{
+  "id_purpose": 12,
+  "purpose_name": "Вечірній одяг",
+  "purpose_name_en": "Evening clothes",
+  "purpose_name_ru": "Нарядная одежда"
+},
+
+
+{
+  "id_season": 1,
+  "season_name": "Зима",
+  "season_name_ru": "Зима",
+  "season_name_en": "Winter"
+},
+
+
+{
+  "id_size": 2,
+  "size": 36
+}
+
+
+{
+  "id_user": 1,
+  "id_good": 1
+}, {
+  "id_component": 2,
+  "component_count": "50%",
+  "component": {
+    "ua": "Поліестер",
+    "en": "Poliester",
+    "ru": "Полиестер",
+  }
+
+}

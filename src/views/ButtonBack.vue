@@ -1,6 +1,7 @@
 <template>
 <div class="button-back">
-    <a @click="getBack">text</a>
+    <a @click="$router.go(-1)">{{text}}</a>
+    <!--<router-link :to="-1">{{text}}</router-link>-->
 </div>
 </template>
 
@@ -14,7 +15,7 @@ export default {
     },
     methods:{
         getBack(){
-            window.history.go(-1);
+         
         },
     }
 }
@@ -26,8 +27,14 @@ export default {
    top:10vh;
    left: 2vw;
    border: 1px solid black;
-   padding: 20px;
    display: block;
    cursor:pointer;
+   width: 40px;
+   height: 30px;
+ }
+ a{
+   width: 100%;
+   height: 100%;
+   display: inline-block;
  }
 </style>

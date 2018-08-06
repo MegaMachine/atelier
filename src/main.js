@@ -10,6 +10,7 @@ import BootstrapVue from 'bootstrap-vue'
 import HeaderBar from './views/HeaderBar.vue';
 import ButtonBack from './views/ButtonBack.vue';
 import SectionWrap from './views/SectionWrap.vue';
+import AppFilter from './views/Filter.vue';
 import VSelect from 'vue-select';
 
 //Styles
@@ -22,6 +23,7 @@ Vue.config.productionTip = false
 Vue.component('HeaderBar',HeaderBar);
 Vue.component('ButtonBack',ButtonBack);
 Vue.component('SectionWrap',SectionWrap);
+Vue.component('AppFilter', AppFilter);
 Vue.component('VSelect',VSelect);
 Vue.use(BootstrapVue);
 

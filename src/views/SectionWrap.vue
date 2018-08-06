@@ -1,11 +1,11 @@
 <template>
-  <section :id="this.sectionName" :class="this.sectionName" >
+  <section :id="sectionName" :class="sectionName"  >
     <button-back></button-back>
-    <div class="container">
+    <div :class="sectionContainer">
       <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-8">
-          <h2 class="page-title">{{ this.sectionTitle }}</h2>
+          <h2 class="page-title">{{ sectionTitle }}</h2>
         </div>
       </div>
       <slot></slot>
@@ -16,18 +16,30 @@
 <script>
   export default {
     name:'section-wrap',
-    props:[
-      'sectionName',
-      'sectionTitle'
-    ]
+    props:{
+      sectionName:{
+        type : String,
+        default : "",
+      },
+      sectionTitle:{
+        type : String,
+        default : ""
+      },
+      sectionContainer : {
+        type : String,
+        default : "container"
+      }
+    }
   }
 </script>
 
 <style scoped>
  section{
    padding-top: 20vh;
-   height: 100vh;
-   width:100vw;
+   min-height: 100vh;
+  height: 100%;
+   /* width:100vw; */
+   /* overflow: hidden; */
  }
  .section-title{
   text-align: center;

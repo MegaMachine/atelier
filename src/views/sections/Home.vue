@@ -49,6 +49,8 @@
     display: flex;
     align-items: center;
     background: url('./../../assets/img/home/home-background.jpg') fixed;
+    // padding-top: 20vh;
+    min-height: 100vh;
     .container{
       .row{
         justify-content: center;
