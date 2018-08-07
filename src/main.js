@@ -4,6 +4,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import BootstrapVue from 'bootstrap-vue'
+import VueLodash from 'vue-lodash'
 
 
 //Components
@@ -25,6 +26,7 @@ Vue.component('ButtonBack',ButtonBack);
 Vue.component('SectionWrap',SectionWrap);
 Vue.component('AppFilter', AppFilter);
 Vue.component('VSelect',VSelect);
+Vue.use(VueLodash,'lodash');
 Vue.use(BootstrapVue);
 
 

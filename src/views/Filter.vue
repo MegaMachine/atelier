@@ -32,28 +32,31 @@
     </div>
     <div class="filter__item select">
       <h2>Категорія</h2>
-      <v-select v-model="filter.category" :options="selectOptionsCategory"></v-select>
+      <v-select v-model="filterResult.category"  :options="selectOptionsCategory"></v-select>
     </div>
     <div class="filter__item select">
       <h2>Тканина</h2>
-      <v-select v-model="filter.material" :options="selectOptionsMaterial"></v-select>
+      <v-select v-model="filterResult.material" :options="selectOptionsMaterial"></v-select>
     </div>
     <div class="filter__item select">
-      <h2 @click="conLog()">Розмір</h2>
-      <v-select v-model="filter.size" :options="selectOptionsSize"></v-select>
+      <h2 @click="onFocus">Розмір</h2>
+      <v-select v-model="filterResult.size"  :options="selectOptionsSize"></v-select>
     </div>
   </div>
 </template>
 
 <script>
+  import goods from './../data/goods.js';
   export default {
     name: "app-filter",
     data() {
       return {
-        filter: {
-          size: null,
-          material: null,
+        goods,
+        viewGoods: [],
+        filterResult: {
           category: null,
+          material: null,
+          size: null,
         }
       }
     },
@@ -61,6 +64,28 @@
       material: Array,
       size: Array,
       category: Array
+    },
+    methods: {
+      filterItem(size, material) {
+        
+        var vm = this;
+        vm.viewGoods = [];
+        vm.viewGoods = _.filter(vm.goods, {
+          size: [{
+            id_size: size
+          }],
+          material:[{
+            id_material: material
+          }]
+        })
+        console.log( vm.viewGoods);
+      },
+      onFocus(){
+        this.filterItem(this.filterResult.size ? this.filterResult.size.value : null, this.filterResult.material ? this.filterResult.material.value : null )
+      },
+      testClick(){
+        console.log(this.filterResult)
+      }
     },
     computed: {
       selectOptionsSize() {
@@ -76,7 +101,7 @@
         }))
       },
       selectOptionsCategory() {
-        return this.material.map(g => ({
+        return this.category.map(g => ({
           label: g.category_name.toString(),
           value: g.id_category
         }))

@@ -98,14 +98,17 @@ body,html,#app,main,section{
     word-wrap: none;
     word-break: normal;
   }
-  .clear{
-    bottom:7px;
-    right:25px;
-    
-    span{
-      color:rgba(60,60,60,.5);
+  .dropdown-toggle{
+    .clear{
+      bottom:7px;
+      right:25px;
+      
+      span{
+        color:rgba(60,60,60,.5);
+      }
     }
-  }
+  } 
+  
 }
 .v-select .dropdown-menu > .highlight > a {
   /*

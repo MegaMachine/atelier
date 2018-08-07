@@ -4,7 +4,8 @@
       <div class="col-md-3">
         <app-filter
         :size="filter.size"
-        :material="filter.material"></app-filter>
+        :material="filter.material"
+        :category="filter.category"></app-filter>
       </div>
       <div class="col-md-8 items">
         <div class="models__item__wrap" :key="item.id_good" v-for="(item) in items">
@@ -25,7 +26,7 @@
                 <p>{{item.description}}</p>
               </div>
               <div class="models__item__desc__size">
-                <span :key="size" v-for="size in item.size">{{size}}</span>
+                <span :key="size.id_size" v-for="size in item.size">{{size.size}}</span>
               </div>
               <div class="models__item__desc__detail">
                 <button>детальніше</button>
@@ -95,7 +96,9 @@
         }
         &__size {
           display: none;
-          span {}
+          span {
+            padding: 0 10px;
+          }
         }
         &__detail {
           display: none;
