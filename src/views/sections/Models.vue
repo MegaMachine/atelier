@@ -30,7 +30,7 @@
                 <span :key="size.id_size" v-for="size in item.size">{{size.size}}</span>
               </div>
               <div class="models__item__desc__detail">
-                <button>детальніше</button>
+                <router-link :to="{ name:'model-view', params:{ id : item.id_good } }">детальніше</router-link>
               </div>
             </div>
           </div>

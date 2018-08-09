@@ -1,15 +1,17 @@
 <template>
   <section-wrap 
-    sectionName="model-view">
+    sectionName="finished-good-view"
+    :sectionTitle="good[0].good_name.ua" 
+    sectionContainer="container-fluid">
     <div class="row">
-      <div class="col-4">
+      <div class="col-12 col-md-6">
         <div class="model-view__info">
-          <div class="model-view__info__img"><img src="" alt=""></div>
-          <div class="model-view__info__desc"></div>
+          <div class="model-view__info__img"><img :src="good[0].photos.photo1" :alt="good[0].good_name.ua"></div>
+          <div class="model-view__info__desc">{{good[0].description}}</div>
           <div class="model-view__info__buttons"></div>
         </div>
       </div>
-      <div class="col-8">
+      <div class="col-12 col-md-6">
          <div class="model-view__cloth">
           <p :key = "index" v-for="(param,index) in good[0]">{{param}}</p>
         </div>

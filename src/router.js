@@ -8,6 +8,8 @@ import Cloth from './views/sections/Cloth.vue'
 import Models from './views/sections/Models.vue'
 import FinishedGoods from './views/sections/FinishedGoods.vue'
 import PrivateCabinet from './views/sections/PrivateCabinet.vue'
+import ModelView from './views/sections/ModelView.vue'
+import FinishedGoodView from './views/sections/FinishedGoodView.vue'
 
 Vue.use(Router)
 
@@ -47,6 +49,16 @@ export default new Router({
       path: '/private-cabinet',
       name: 'private-cabinet',
       component: PrivateCabinet
+    },
+    {
+      path: '/model-view/:id',
+      name: 'model-view',
+      component: ModelView
+    },
+    {
+      path: '/finished-good-view/:id',
+      name: 'finished-good-view',
+      component: FinishedGoodView
     },
   ]
 })

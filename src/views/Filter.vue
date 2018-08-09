@@ -42,7 +42,7 @@
       <h2 @click="filterItem">Розмір</h2>
       <v-select v-model="filterResult.selects.size"  :options="selectOptionsSize"></v-select>
     </div>
-    <button @click.prevent="$emit('filter-result', viewGoods)">Фільтрувати</button>
+    <button @click.prevent="sendData">Фільтрувати</button>
   </div>
 </template>
 
@@ -91,8 +91,11 @@
           }
         })
         vm.viewGoods = _.filter(vm.goods, obj) //{material:[{id_material:3}],size:[{id_size : 3}]}
-        console.log(obj);
       },
+      sendData(){
+        this.filterItem();
+        this.$emit('filter-result', this.viewGoods)
+      }
     },
     computed: {
       selectOptionsSize() {
