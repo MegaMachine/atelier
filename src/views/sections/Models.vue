@@ -5,10 +5,11 @@
         <app-filter
         :size="filter.size"
         :material="filter.material"
-        :category="filter.category"></app-filter>
+        :category="filter.category"
+        @filter-result="takeFilterResult"></app-filter>
       </div>
       <div class="col-md-8 items">
-        <div class="models__item__wrap" :key="item.id_good" v-for="(item) in items">
+        <div class="models__item__wrap" :key="item.id_good" v-for="(item) in viewGoods">
           <div class="models__item">
             <div class="models__item__img">
               <img :src="item.photos[0]" alt="model">
@@ -46,11 +47,19 @@
     name: 'models',
     data() {
       return {
-        selected: null,
-        items: goods,
+        viewGoods:null,
+        goods,
         filter,
       }
     },
+    methods:{
+      takeFilterResult(obj){
+        this.viewGoods = obj;
+      }
+    },
+    created(){
+      return this.viewGoods = goods;
+    }
   }
 </script>
 

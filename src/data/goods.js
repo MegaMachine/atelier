@@ -108,6 +108,7 @@ module.exports = [
     "id_model": 1,
     "article": "1",
     "season": 3,
+    "contingent": 1,
     "storage": true,
     "price": "18000.00",
     "size": [
@@ -118,6 +119,10 @@ module.exports = [
       {
         "id_size": 2,
         "size": 37
+      },
+      {
+        "id_size": 4,
+        "size": 39
       },
       {
         "id_size": 5,
@@ -134,7 +139,6 @@ module.exports = [
         "material_name": "ЖАККАРД 5555/2017",
       }
     ],
-    "contingent": 1
   },
 ]
 

@@ -4,11 +4,11 @@
       <h2>Стать</h2>
       <div>
         <label class="filter__item__male">
-          <input type="radio" name="gender" id="male" value="male">
+          <input v-model="filterResult.inputs.contingent" type="radio" name="gender" id="male" value="1">
           <span></span>
         </label>
         <label class="filter__item__famale">
-          <input type="radio" name="gender" id="famale" value="famale">
+          <input v-model="filterResult.inputs.contingent" type="radio" name="gender" id="famale" value="2">
           <span></span>
         </label>
       </div>
@@ -17,31 +17,32 @@
       <h2>Сезон</h2>
       <div>
         <label class="filter__item__sun">
-          <input type="radio" name="season" id="sun" value="sun">
+          <input v-model="filterResult.inputs.season" type="radio" name="season" id="sun" value="1">
           <span></span>
         </label>
         <label class="filter__item__winter">
-          <input type="radio" name="season" id="winter" value="winter">
+          <input v-model="filterResult.inputs.season" type="radio" name="season" id="winter" value="2">
           <span></span>
         </label>
         <label class="filter__item__rain">
-          <input type="radio" name="season" id="rain" value="rain">
+          <input v-model="filterResult.inputs.season" type="radio" name="season" id="rain" value="3">
           <span></span>
         </label>
       </div>
     </div>
     <div class="filter__item select">
       <h2>Категорія</h2>
-      <v-select v-model="filterResult.category"  :options="selectOptionsCategory"></v-select>
+      <v-select v-model="filterResult.selects.category"  :options="selectOptionsCategory"></v-select>
     </div>
     <div class="filter__item select">
       <h2>Тканина</h2>
-      <v-select v-model="filterResult.material" :options="selectOptionsMaterial"></v-select>
+      <v-select v-model="filterResult.selects.material" :options="selectOptionsMaterial"></v-select>
     </div>
     <div class="filter__item select">
-      <h2 @click="onFocus">Розмір</h2>
-      <v-select v-model="filterResult.size"  :options="selectOptionsSize"></v-select>
+      <h2 @click="filterItem">Розмір</h2>
+      <v-select v-model="filterResult.selects.size"  :options="selectOptionsSize"></v-select>
     </div>
+    <button @click.prevent="$emit('filter-result', viewGoods)">Фільтрувати</button>
   </div>
 </template>
 
@@ -54,9 +55,15 @@
         goods,
         viewGoods: [],
         filterResult: {
-          category: null,
-          material: null,
-          size: null,
+          inputs:{
+            season : null,
+            contingent : null
+          },
+          selects:{
+            category : null,
+            material : null,
+            size : null,
+          }
         }
       }
     },
@@ -66,26 +73,26 @@
       category: Array
     },
     methods: {
-      filterItem(size, material) {
-        
+      filterItem() {  
         var vm = this;
         vm.viewGoods = [];
-        vm.viewGoods = _.filter(vm.goods, {
-          size: [{
-            id_size: size
-          }],
-          material:[{
-            id_material: material
-          }]
+        var obj = {};
+        _.filter(vm.filterResult.inputs, function(value, key){
+          if(value){
+            obj[key] = Number(value);
+          }
         })
-        console.log( vm.viewGoods);
+        _.filter(vm.filterResult.selects, function(value, key){
+          var obj2 = {};
+          if(value){
+            obj[key] = [];
+            obj2['id_' + key] = value.value;
+            obj[key][0] = obj2
+          }
+        })
+        vm.viewGoods = _.filter(vm.goods, obj) //{material:[{id_material:3}],size:[{id_size : 3}]}
+        console.log(obj);
       },
-      onFocus(){
-        this.filterItem(this.filterResult.size ? this.filterResult.size.value : null, this.filterResult.material ? this.filterResult.material.value : null )
-      },
-      testClick(){
-        console.log(this.filterResult)
-      }
     },
     computed: {
       selectOptionsSize() {
