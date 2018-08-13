@@ -1,25 +1,22 @@
-
-module.exports = [
-  {
+module.exports = [{
     "id_good": 1,
-    "good_name":{
-      "ua":"Cукня 1",
+    "good_name": {
+      "ua": "Cукня 1",
       "en": "Dress1",
       "ru": "Платье 1",
     },
-    "photos":{
-      "photo1": "@/assets/img/models/1.png",
-      "photo2": "@/assets/img/models/1.png",
-      "photo3": "@/assets/img/models/1.png",
-    },
+    "photos": [
+      "@/assets/img/models/1.png",
+      "@/assets/img/models/1.png",
+      "@/assets/img/models/1.png",
+    ],
     "description": "фівфівфівфівфівфівфівфівфівфі",
     "id_model": 1,
     "article": "1",
     "season": 3,
     "storage": true,
     "price": "18000.00",
-    "size": [
-      {
+    "size": [{
         "id_size": 1,
         "size": 36
       },
@@ -36,8 +33,7 @@ module.exports = [
         "size": 40
       },
     ],
-    "material": [
-      {
+    "material": [{
         "id_material": 1,
         "material_name": "ЖАККАРД 3171/2017",
       },
@@ -50,24 +46,23 @@ module.exports = [
   },
   {
     "id_good": 2,
-    "good_name":{
-      "ua":"Cукня 2",
+    "good_name": {
+      "ua": "Cукня 2",
       "en": "Dress1",
       "ru": "Платье 1",
     },
-    "photos":{
-      "photo1": "@/assets/img/models/1.png",
-      "photo2": "@/assets/img/models/1.png",
-      "photo3": "@/assets/img/models/1.png",
-    },
+    "photos": [
+      "@/assets/img/models/1.png",
+      "@/assets/img/models/1.png",
+      "@/assets/img/models/1.png",
+    ],
     "description": "фйффйфйфйфйфйфйфйфй",
     "id_model": 1,
     "article": "1",
     "season": 3,
     "storage": true,
     "price": "18000.00",
-    "size": [
-      {
+    "size": [{
         "id_size": 3,
         "size": 38
       },
@@ -76,8 +71,7 @@ module.exports = [
         "size": 39
       },
     ],
-    "material": [
-      {
+    "material": [{
         "id_material": 3,
         "material_name": "ЖАККАРД 1111/2017",
       },
@@ -94,16 +88,16 @@ module.exports = [
   },
   {
     "id_good": 3,
-    "good_name":{
-      "ua":"Cукня 3",
+    "good_name": {
+      "ua": "Cукня 3",
       "en": "Dress1",
       "ru": "Платье 1",
     },
-    "photos":{
-      "photo1": "@/assets/img/models/1.png",
-      "photo2": "@/assets/img/models/1.png",
-      "photo3": "@/assets/img/models/1.png",
-    },
+    "photos": [
+      "@/assets/img/models/1.png",
+      "@/assets/img/models/1.png",
+      "@/assets/img/models/1.png",
+    ],
     "description": "яччячячячячячячячяч",
     "id_model": 1,
     "article": "1",
@@ -111,8 +105,7 @@ module.exports = [
     "contingent": 1,
     "storage": true,
     "price": "18000.00",
-    "size": [
-      {
+    "size": [{
         "id_size": 1,
         "size": 36
       },
@@ -129,10 +122,10 @@ module.exports = [
         "size": 40
       },
     ],
-    "material": [
-      {
+    "material": [{
         "id_material": 1,
         "material_name": "ЖАККАРД 3171/2017",
+         "photo":"url"
       },
       {
         "id_material": 5,
@@ -141,7 +134,3 @@ module.exports = [
     ],
   },
 ]
-
-
-
-

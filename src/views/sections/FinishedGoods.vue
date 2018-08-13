@@ -12,7 +12,7 @@
         <div class="finished-goods__item__wrap" :key="item.id_good" v-for="(item) in viewGoods">
           <div class="finished-goods__item">
             <div class="finished-goods__item__img">
-              <img :src="item.photos[0]" alt="model">
+              <img :src="item.photos[0]" :alt="item.good_name.ua">
             </div>
             <div class="finished-goods__item__desc">
               <div class="finished-goods__item__desc__name">
@@ -57,8 +57,8 @@
         this.viewGoods = obj;
       }
     },
-    created(){
-      return this.viewGoods = goods;
+    created(){     
+      this.viewGoods = this.goods;
     }
   }
 </script>
