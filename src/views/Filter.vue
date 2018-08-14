@@ -72,6 +72,7 @@
       size: Array,
       category: Array
     },
+   
     methods: {
       filterItem() {  
         var vm = this;
@@ -124,6 +125,8 @@
   @import './../assets/scss/_variable.scss';
   .filter {
     // position: fixed;
+    box-shadow: 0 0 10px 0px rgba(0,0,0,.3);
+    padding: 20px;
     &__item {
       align-items: center;
       display: flex;
@@ -188,6 +191,13 @@
         flex-direction: column;
       }
     }
+    button{
+      display: block;
+      margin: 0 auto;
+      border-radius: 3px;
+      border:none;
+      padding: 5px 15px;
 
+    }
   }
 </style>

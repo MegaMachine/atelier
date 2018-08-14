@@ -1,7 +1,7 @@
 <template>
   <section-wrap 
     sectionName="finished-good-view"
-    sectionContainer="container-fluid">
+    sectionContainer="container">
     <div class="row">
       <div class="col-12 col-md-6">
         <div class="finished-good-view__info">
@@ -13,14 +13,16 @@
             <div class="finished-good-view__info__text">
               <h2>{{good[0].good_name.ua}}</h2>
               <div class="finished-good-view__info__size">
-                <label :key="size.id_size" v-for="size in good[0].size"><input v-model="goodOptions.size" name="good-size" type="radio"><span>{{size.size}}</span></label>
+                <label :key="size.id_size" v-for="size in good[0].size">
+                  <input v-model="goodOptions.size" :value="size.id_size" name="good-size" type="radio">
+                  <span>{{size.size}}</span>
+                  </label>
               </div>
             </div>         
           </div>
           <div>
             <div class="finished-good-view__info__desc">
               <p>{{good[0].description}}</p>
-              <span>{{good[0].price}} грн</span>
               </div>
           </div>
         </div>
@@ -37,7 +39,7 @@
         </div>
         <div class="finished-good-view__buttons">
           <div class="finished-good-view__buttons__like"><span></span></div>
-          <div class="finished-good-view__buttons__order"><button>замовити</button></div>
+          <div class="finished-good-view__buttons__order"><button @click="putCart">замовити</button></div>
         </div>
       </div>
     </div>
@@ -53,12 +55,22 @@ import goods from './../../data/goods.js'
         good:null,
         goods,
         goodOptions:{
-          size:null
+          id_good:this.$route.params.id,
+          size:null,
         }
       }
     },
     created(){
       this.good = _.filter(goods,{id_good:this.$route.params.id})
+    },
+    methods:{
+      putCart(){
+        var good = [];
+        good = JSON.parse(localStorage.getItem('goodCart'));
+        good.push(JSON.stringify(this.goodOptions));
+        localStorage.setItem('goodCart', good);
+        // console.log(this.goodOptions);
+      }
     }
   }
 </script>
@@ -121,6 +133,9 @@ import goods from './../../data/goods.js'
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    &__price{
+      
+    }
     &__like{
       margin-right: 20px;
       span{

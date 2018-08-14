@@ -1,10 +1,10 @@
 <template>
-  <section :id="sectionName" :class="sectionName"  >
+  <section :id="sectionName" :class="sectionName">
     <button-back></button-back>
     <div :class="sectionContainer">
       <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-8">
+        <!-- <div class="col-md-4"></div> -->
+        <div class="col-12">
           <h2 class="page-title">{{ sectionTitle }}</h2>
         </div>
       </div>
@@ -35,16 +35,17 @@
 
 <style scoped>
  section{
-   padding-top: 20vh;
-   min-height: 100vh;
+  padding-top: 20vh;
+  min-height: 100vh;
   height: 100%;
    /* width:100vw; */
    /* overflow: hidden; */
  }
- .section-title{
+ .page-title{
   text-align: center;
   text-transform:uppercase;
-  font-size:1.125rem;
+  font-size:2rem;
+  margin-bottom: 60px;
  }
  
 </style>

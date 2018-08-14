@@ -1,6 +1,6 @@
 <template>
 <div class="button-back">
-    <a @click="$router.go(-1)">{{text}}</a>
+    <a @click="$router.go(-1)">назад</a>
     <!--<router-link :to="-1">{{text}}</router-link>-->
 </div>
 </template>
@@ -21,20 +21,30 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
  .button-back{
    position: fixed;
-   top:10vh;
+   top:15vh;
    left: 2vw;
-   border: 1px solid black;
    display: block;
    cursor:pointer;
-   width: 40px;
-   height: 30px;
+   &:hover{
+     transform: scale(1.1);
+   }
  }
  a{
+   text-transform: uppercase;
    width: 100%;
    height: 100%;
-   display: inline-block;
+   display: flex;
+   align-items: center;
+   &:before{
+     content:"";
+     display: inline-block;
+     width: 24px;
+     height: 24px;
+     background: url('./../assets/img/left-arrow.png') no-repeat center;
+   }
+  
  }
 </style>

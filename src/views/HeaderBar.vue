@@ -38,7 +38,7 @@
     box-shadow: 0 0 30px 10px #000;
     position: fixed;
     width: 100%;
-    z-index: 1;
+    z-index: 2;
     &__logo {
       display: block;
     }

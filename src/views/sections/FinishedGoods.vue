@@ -2,17 +2,13 @@
   <section-wrap sectionName="finished-goods" sectionTitle="Готові Вироби" sectionContainer="container">
     <div class="row">
       <div class="col-md-3">
-        <app-filter
-        :size="filter.size"
-        :material="filter.material"
-        :category="filter.category"
-        @filter-result="takeFilterResult"></app-filter>
+        <app-filter :size="filter.size" :material="filter.material" :category="filter.category" @filter-result="takeFilterResult"></app-filter>
       </div>
       <div class="col-md-8 items">
         <div class="finished-goods__item__wrap" :key="item.id_good" v-for="(item) in viewGoods">
-          <div class="finished-goods__item">
+          <div class="finished-goods__item" @mouseover="hoverItemPadding">
             <div class="finished-goods__item__img">
-              <img :src="item.photos[0]" :alt="item.good_name.ua">
+              <img :src="require('@/assets/img/models/1.png')" :alt="item.good_name.ua">
             </div>
             <div class="finished-goods__item__desc">
               <div class="finished-goods__item__desc__name">
@@ -47,17 +43,20 @@
     name: 'finished-goods',
     data() {
       return {
-        viewGoods:null,
+        viewGoods: null,
         goods,
         filter,
       }
     },
-    methods:{
-      takeFilterResult(obj){
+    methods: {
+      takeFilterResult(obj) {
         this.viewGoods = obj;
+      },
+      hoverItemPadding(item){
+        console.log(item);
       }
     },
-    created(){     
+    created() {
       this.viewGoods = this.goods;
     }
   }
@@ -66,15 +65,15 @@
 <style scoped lang="scss">
   @import './../../assets/scss/_variable.scss';
   .finished-goods {
-
     .items {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       flex-wrap: wrap;
       padding-bottom: 350px;
     }
 
     &__item {
+      width: 100%;
       &__wrap {
         width: 28%;
         margin: 0 2.5% 5%;
@@ -88,17 +87,26 @@
         }
       }
       &__desc {
-        padding: 10px;
+        padding: 10px 10px 30px;
+        &__name{
+          p{
+            margin-bottom: 5px;
+          }
+        }
         &__price {
           h2 {
-            font-size: 16px;
-            font-weight: bold;
-            span {}
+            font-size: 20px;
+            color: $color-red;
+            text-transform: uppercase;
+            span {
+              color: $color-red;
+            }
           }
         }
         &__text {
           p {
             white-space: nowrap;
+            word-wrap: break-word;
             overflow: hidden;
             text-overflow: ellipsis;
           }
@@ -111,16 +119,22 @@
         }
         &__detail {
           display: none;
-          button {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          a {
+            display: block;
             width: 100%;
             color: white;
-            border: none;
+            text-transform: uppercase;
+            text-align: center;
             background: linear-gradient(to right, #ff8486 37%, #ff9393 52%, #fff06d 87%);
           }
         }
       }
       &:hover {
-        z-index: 999;
+        z-index: 1;
         box-shadow: 0 0 10px 0px rgba(0, 0, 0, .3);
         background-color: #f4f0e8;
         cursor: pointer;

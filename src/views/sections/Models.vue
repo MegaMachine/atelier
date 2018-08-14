@@ -65,16 +65,99 @@
 
 <style scoped lang="scss">
   @import './../../assets/scss/_variable.scss';
-  .models {
+  // .models {
 
+  //   .items {
+  //     display: flex;
+  //     justify-content: space-between;
+  //     flex-wrap: wrap;
+  //     padding-bottom: 350px;
+  //   }
+
+  //   &__item {
+  //     &__wrap {
+  //       width: 28%;
+  //       margin: 0 2.5% 5%;
+  //       position: relative;
+  //     }
+  //     padding: 10px 10px 0px;
+  //     &__img {
+  //       width: 100%;
+  //       img {
+  //         width: 100%;
+  //       }
+  //     }
+  //     &__desc {
+  //       padding: 10px;
+  //       &__price {
+  //         h2 {
+  //           font-size: 16px;
+  //           font-weight: bold;
+  //           span {}
+  //         }
+  //       }
+  //       &__text {
+  //         p {
+  //           white-space: nowrap;
+  //           overflow: hidden;
+  //           text-overflow: ellipsis;
+  //         }
+  //       }
+  //       &__size {
+  //         display: none;
+  //         span {
+  //           padding: 0 10px;
+  //         }
+  //       }
+  //       &__detail {
+  //         display: none;
+  //         button {
+  //           width: 100%;
+  //           color: white;
+  //           border: none;
+  //           background: linear-gradient(to right, #ff8486 37%, #ff9393 52%, #fff06d 87%);
+  //         }
+  //       }
+  //     }
+  //     &:hover {
+  //       z-index: 999;
+  //       box-shadow: 0 0 10px 0px rgba(0, 0, 0, .3);
+  //       background-color: #f4f0e8;
+  //       cursor: pointer;
+  //       position: absolute;
+  //       top: 0;
+  //       left: 0;
+  //       z-index: 1;
+  //       .models__item__desc {
+  //         &__text {
+  //           p {
+  //             white-space: normal;
+  //             overflow: visible;
+  //           }
+  //         }
+  //         &__size {
+  //           display: block;
+  //           span {}
+  //         }
+  //         &__detail {
+  //           display: block;
+  //           button {}
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+
+  .models {
     .items {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       flex-wrap: wrap;
       padding-bottom: 350px;
     }
 
     &__item {
+      width: 100%;
       &__wrap {
         width: 28%;
         margin: 0 2.5% 5%;
@@ -88,17 +171,26 @@
         }
       }
       &__desc {
-        padding: 10px;
+        padding: 10px 10px 30px;
+        &__name{
+          p{
+            margin-bottom: 5px;
+          }
+        }
         &__price {
           h2 {
-            font-size: 16px;
-            font-weight: bold;
-            span {}
+            font-size: 20px;
+            color: $color-red;
+            text-transform: uppercase;
+            span {
+              color: $color-red;
+            }
           }
         }
         &__text {
           p {
             white-space: nowrap;
+            word-wrap: break-word;
             overflow: hidden;
             text-overflow: ellipsis;
           }
@@ -111,16 +203,22 @@
         }
         &__detail {
           display: none;
-          button {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          a {
+            display: block;
             width: 100%;
             color: white;
-            border: none;
+            text-transform: uppercase;
+            text-align: center;
             background: linear-gradient(to right, #ff8486 37%, #ff9393 52%, #fff06d 87%);
           }
         }
       }
       &:hover {
-        z-index: 999;
+        z-index: 1;
         box-shadow: 0 0 10px 0px rgba(0, 0, 0, .3);
         background-color: #f4f0e8;
         cursor: pointer;
@@ -128,7 +226,7 @@
         top: 0;
         left: 0;
         z-index: 1;
-        .models__item__desc {
+        .finished-goods__item__desc {
           &__text {
             p {
               white-space: normal;
