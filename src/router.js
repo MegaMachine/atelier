@@ -10,6 +10,7 @@ import FinishedGoods from './views/sections/FinishedGoods.vue'
 import PrivateCabinet from './views/sections/PrivateCabinet.vue'
 import ModelView from './views/sections/ModelView.vue'
 import FinishedGoodView from './views/sections/FinishedGoodView.vue'
+import ClothView from './views/sections/ClothView.vue'
 
 Vue.use(Router)
 
@@ -60,5 +61,11 @@ export default new Router({
       name: 'finished-good-view',
       component: FinishedGoodView
     },
+    {
+      path: '/cloth-view/:id',
+      name: 'cloth-view',
+      component: ClothView
+    },
+    
   ]
 })

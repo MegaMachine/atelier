@@ -12,6 +12,7 @@ import HeaderBar from './views/HeaderBar.vue';
 import ButtonBack from './views/ButtonBack.vue';
 import SectionWrap from './views/SectionWrap.vue';
 import AppFilter from './views/Filter.vue';
+import ClothFilter from './views/ClothFilter.vue';
 import VSelect from 'vue-select';
 
 //Styles
@@ -26,6 +27,7 @@ Vue.component('ButtonBack',ButtonBack);
 Vue.component('SectionWrap',SectionWrap);
 Vue.component('AppFilter', AppFilter);
 Vue.component('VSelect',VSelect);
+Vue.component('ClothFilter',ClothFilter);
 Vue.use(VueLodash,'lodash');
 Vue.use(BootstrapVue);
 

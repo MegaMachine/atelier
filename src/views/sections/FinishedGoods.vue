@@ -155,7 +155,6 @@
           }
           &__detail {
             display: block;
-            button {}
           }
         }
       }
