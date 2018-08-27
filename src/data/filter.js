@@ -60,5 +60,23 @@ module.exports = {
       "id_category": 4,
       "category_name": "Шапочки",
     },
+  ],
+  composition:[
+    {
+      "id_composition": 1,
+      "composition_name": "Шкіра",
+    },
+    {
+      "id_composition": 2,
+      "composition_name": "Шерсть",
+    },
+    {
+      "id_composition": 3,
+      "composition_name": "Шовк",
+    },
+    {
+      "id_composition": 4,
+      "composition_name": "Трикотаж",
+    },
   ]
 }

@@ -26,6 +26,7 @@ module.exports = [
     "photo":"@/../../assets/img/cloth/1.png",
     "description": "Ddddddddddasdasdddddddddddddddasdasdas",
     "price": 1200,
+    "id_category": 1,
   },
   {
     "id_material": 5,
@@ -33,5 +34,7 @@ module.exports = [
     "photo":"@/../../assets/img/cloth/1.png",
     "description": "Ddddddddddasdasdddddddddddddddasdasdas",
     "price": 1500,
+    "id_category": 1,
+    "id_composition":1
   } 
 ];

@@ -2,14 +2,13 @@
  <section-wrap sectionName="cloth" sectionTitle="Тканини" sectionContainer="container">
     <div class="row">
       <div class="col-md-3">
-        <!-- <cloth-filter
-        :size="filter.size"
-        :material="filter.material"
+        <cloth-filter
         :category="filter.category"
-        @filter-result="takeFilterResult"></cloth-filter> -->
+        :composition="filter.composition"
+        @filter-result="takeFilterResult"></cloth-filter>
       </div>
       <div class="col-md-8 items">
-        <div class="cloth__item__wrap" :key="item.id_material" v-for="item in materials">
+        <div class="cloth__item__wrap" :key="item.id_material" v-for="item in viewCloth">
           <div class="cloth__item">
             <div class="cloth__item__img">
               <img :src="require('@/assets/img/cloth/1.png')" alt="model">
@@ -39,16 +38,24 @@
 
 <script>
 import materials from './../../data/cloth.js';
+import filter from "./../../data/filter.js";
   export default {
     name:'cloth',
     data(){
       return{
         materials,
+        filter,
+        viewCloth : null,
       }
     },
     created(){
-      console.log(this.materials);
-    }
+      this.viewCloth = this.materials
+    },
+      methods: {
+      takeFilterResult(obj) {
+        this.viewCloth = obj;
+      }
+    },
   }
 </script>
 

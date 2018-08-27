@@ -2,24 +2,24 @@
   <div class="filter">
     <div class="filter__item select">
       <h2>Склад</h2>
-      <v-select v-model="filterResult.selects.category"  :options="selectOptionsCategory"></v-select>
+      <v-select v-model="filterResult.selects.composition"  :options="selectOptionsСomposition"></v-select>
     </div>
     <div class="filter__item select">
       <h2>Категорія</h2>
-      <v-select v-model="filterResult.selects.material" :options="selectOptionsMaterial"></v-select>
+      <v-select v-model="filterResult.selects.category" :options="selectOptionsCategory"></v-select>
     </div>
     <button @click.prevent="sendData">Фільтрувати</button>
   </div>
 </template>
 
 <script>
-  import goods from './../data/goods.js';
+  import cloth from './../data/cloth.js';
   export default {
     name: "app-filter",
     data() {
       return {
-        goods,
-        viewGoods: [],
+        cloth,
+        viewCloth: [],
         filterResult: {
           selects:{
             composition : null,
@@ -29,47 +29,33 @@
       }
     },
     props: {
-      material: Array,
-      size: Array,
-      category: Array
+      category: Array,
+      composition: Array
     },
    
     methods: {
       filterItem() {  
         var vm = this;
-        vm.viewGoods = [];
+        vm.viewCloth = [];
         var obj = {};
-        _.filter(vm.filterResult.inputs, function(value, key){
-          if(value){
-            obj[key] = Number(value);
-          }
-        })
         _.filter(vm.filterResult.selects, function(value, key){
-          var obj2 = {};
           if(value){
-            obj[key] = [];
-            obj2['id_' + key] = value.value;
-            obj[key][0] = obj2
+            obj['id_'+key] = value.value;
           }
         })
-        vm.viewGoods = _.filter(vm.goods, obj) //{material:[{id_material:3}],size:[{id_size : 3}]}
+         vm.viewCloth = _.filter(vm.cloth, obj)
+         console.log(obj)
       },
       sendData(){
         this.filterItem();
-        this.$emit('filter-result', this.viewGoods)
+        this.$emit('filter-result', this.viewCloth)
       }
     },
     computed: {
-      selectOptionsSize() {
-        return this.size.map(g => ({
-          label: g.size.toString(),
-          value: g.id_size
-        }))
-      },
-      selectOptionsMaterial() {
-        return this.material.map(g => ({
-          label: g.material_name.toString(),
-          value: g.id_material
+      selectOptionsСomposition() {
+        return this.composition.map(g => ({
+          label: g.composition_name.toString(),
+          value: g.id_composition
         }))
       },
       selectOptionsCategory() {
