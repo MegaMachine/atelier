@@ -13,6 +13,7 @@ import ButtonBack from './views/ButtonBack.vue';
 import SectionWrap from './views/SectionWrap.vue';
 import AppFilter from './views/Filter.vue';
 import ClothFilter from './views/ClothFilter.vue';
+import ButtonOrder from './views/ButtonOrder.vue';
 import VSelect from 'vue-select';
 
 //Styles
@@ -28,6 +29,7 @@ Vue.component('SectionWrap',SectionWrap);
 Vue.component('AppFilter', AppFilter);
 Vue.component('VSelect',VSelect);
 Vue.component('ClothFilter',ClothFilter);
+Vue.component('ButtonOrder',ButtonOrder);
 Vue.use(VueLodash,'lodash');
 Vue.use(BootstrapVue);
 

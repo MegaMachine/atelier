@@ -15,7 +15,7 @@ module.exports = [
   },
   {
     "id_material": 3,
-      "material_name": "ЖАККАРД 1111/2017",
+    "material_name": "ЖАККАРД 1111/2017",
     "photo":"@/../../assets/img/cloth/1.png",
     "description": "Ddddddddddasdasdddddddddddddddasdasdas",
     "price": 1000,

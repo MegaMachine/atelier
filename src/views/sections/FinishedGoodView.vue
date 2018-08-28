@@ -38,8 +38,9 @@
               </div>
         </div>
         <div class="finished-good-view__buttons">
-          <div class="finished-good-view__buttons__like"><span></span></div>
-          <div class="finished-good-view__buttons__order"><button @click="putCart">замовити</button></div>
+          <!-- <div class="finished-good-view__buttons__like"><span></span></div>
+          <div class="finished-good-view__buttons__order"><button @click="putCart">замовити</button></div> -->
+          <button-order :items="goodOptions"></button-order>
         </div>
       </div>
     </div>
@@ -62,15 +63,6 @@ import goods from './../../data/goods.js'
     },
     created(){
       this.good = _.filter(goods,{id_good:this.$route.params.id})
-    },
-    methods:{
-      putCart(){
-        var good = [];
-        good = JSON.parse(localStorage.getItem('goodCart'));
-        good.push(JSON.stringify(this.goodOptions));
-        localStorage.setItem('goodCart', good);
-        // console.log(this.goodOptions);
-      }
     }
   }
 </script>
