@@ -38,9 +38,8 @@
               </div>
         </div>
         <div class="finished-good-view__buttons">
-          <!-- <div class="finished-good-view__buttons__like"><span></span></div>
-          <div class="finished-good-view__buttons__order"><button @click="putCart">замовити</button></div> -->
-          <button-order :items="goodOptions"></button-order>
+          <button-wishlist :items="clothOptions"></button-wishlist>
+          <button-car :items="goodOptions"></button-car>
         </div>
       </div>
     </div>

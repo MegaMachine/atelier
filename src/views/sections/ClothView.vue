@@ -20,7 +20,8 @@
             <span>{{cloth[0].price}}grn</span>
           </div>
           <div class="cloth-view__bot-block__buttons">
-            <button-order></button-order>
+            <button-wishlist :items="clothOptions"></button-wishlist>
+            <button-car :items="clothOptions"></button-car>
           </div>
         </div>
       </div>
@@ -29,15 +30,14 @@
           <div class="cloth-view__models__item" 
             :key="item.id_good"
             :value="item.id_good" 
-            v-for="item in goodsFilter"
-            @click="choiceGood">
+            v-for="item in goodsFilter">
             <div class="cloth-view__models__item__img">
               <img :src="require('@/assets/img/models/1.png')" alt="">
             </div>
             <div class="cloth-view__models__item__size">
               <!-- <span :key="size" v-for="size in item.size">{{size.size}}</span> -->
                <label :key="size.id_size" v-for="size in item.size">
-                  <input v-model="clothOptions.size" :value="size.id_size" name="good-size" type="radio">
+                  <input v-model="clothOptions.id_size" :value="size.id_size" name="good-size" type="radio" @click="choiceGood">
                   <span>{{size.size}}</span>
                   </label>
             </div>
@@ -61,7 +61,7 @@ import goods from './../../data/goods.js';
         goodsFilter:null,
         clothOptions:{
           id_cloth:this.$route.params.id,
-          size:null,
+          id_size:null,
           id_good:null
         },
       }
@@ -71,16 +71,32 @@ import goods from './../../data/goods.js';
       this.goodsFilter = this._.filter( this.goods,{ material:[{id_material:this.$route.params.id}]})
     },
     methods:{
-      putCart(){
-        var good = [];
-        good = JSON.parse(localStorage.getItem('goodCart'));
-        good.push(JSON.stringify(this.clothOptions));
-        localStorage.setItem('goodCart', good);
-      },
       choiceGood(event){
-        // this.clothOptions.id_good = event.target.attributs.value
-        console.log(event)
-      }
+        let eventTarget = event.currentTarget;
+        let item = eventTarget.closest('.cloth-view__models__item');
+        let inputSimulator = eventTarget.nextSibling;
+        let size = document.querySelectorAll('.cloth-view__models__item__size span');
+        size.forEach(function(item){
+          item.classList.remove('active')
+        })
+        this.clothOptions.id_good = Number(item.getAttribute('value'));
+        inputSimulator.classList.add('active');
+        console.log(this.clothOptions)
+      },
+      // getCreateStorage(storageName){
+      //   var items = [];
+      //   var getItems = localStorage.getItem(String(storageName))
+      //   items = JSON.parse(getItems);
+      //   console.log(items)
+      //   items.push(JSON.stringify(this.clothOptions));
+      //   localStorage.setItem(String(storageName), items);
+      // },
+      // putIntoCart(){
+      //   this.getCreateStorage('cart');
+      // },
+      // putIntoWishlist(){
+      //   this.getCreateStorage('wishlist');
+      // }
     }
   }
 </script>
@@ -127,6 +143,9 @@ import goods from './../../data/goods.js';
           font-family: $font-a;
           font-size: 1.5rem;
           font-weight: normal;
+          &.active{
+            color:$color-red;
+          }
         }
         input{
           opacity: 0;
@@ -134,9 +153,7 @@ import goods from './../../data/goods.js';
           cursor: pointer;
           width: 100%;
           height: 100%;
-          &:checked ~ span{
-            color:$color-red;
-          }
+         
         }
       }
       }
