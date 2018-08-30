@@ -30,7 +30,7 @@
             :key="item.id_good"
             :value="item.id_good" 
             v-for="item in goodsFilter"
-            @click="choiceGood">
+            @click="choiceGood($event)">
             <div class="cloth-view__models__item__img">
               <img :src="require('@/assets/img/models/1.png')" alt="">
             </div>
@@ -78,8 +78,25 @@ import goods from './../../data/goods.js';
         localStorage.setItem('goodCart', good);
       },
       choiceGood(event){
-        // this.clothOptions.id_good = event.target.attributs.value
-        console.log(event)
+        let size = document.querySelectorAll('.cloth-view__models__item__size label input');
+        
+        let current = event.currentTarget;
+        let size2 = current.querySelectorAll('input');
+        let inputSimulator = current.querySelectorAll('span');
+        Object.keys(size).map(function(key1,value){
+          Object.keys(size2).map(function(key2,value){
+            if(!(size2[key2].checked && size[key1].checked)){
+              size[key1].checked = false;
+            }
+          });
+        });
+        this.clothOptions.id_good = current.attributes.value.value;
+        event.target.checked = true;
+        current.querySelectorAll('input')
+      },
+      radioCheck(event){
+       
+        
       }
     }
   }
@@ -119,7 +136,7 @@ import goods from './../../data/goods.js';
       }
       &__size{
         width: 100%;      
-      &>label{
+        label{
         position: relative;
         margin-right: 15px;
         
@@ -134,7 +151,7 @@ import goods from './../../data/goods.js';
           cursor: pointer;
           width: 100%;
           height: 100%;
-          &:checked ~ span{
+          &:checked + span{
             color:$color-red;
           }
         }
