@@ -12,17 +12,20 @@
             </div>
             <div class="finished-goods__item__desc">
               <div class="finished-goods__item__desc__name">
+                <img :src="require('@/assets/img/item/dress.png')" alt="" class="item-icons">
                 <p>{{item.good_name.ua}}</p>
               </div>
               <div class="finished-goods__item__desc__price">
-                <h2>{{item.price}}
+                <img :src="require('@/assets/img/item/wallet.png')" alt="" class="item-icons">
+                <p>{{item.price}}
                   <span>grn</span>
-                </h2>
+                </p>
               </div>
-              <div class="finished-goods__item__desc__text">
+              <!-- <div class="finished-goods__item__desc__text">
                 <p>{{item.description}}</p>
-              </div>
+              </div> -->
               <div class="finished-goods__item__desc__size">
+                <img :src="require('@/assets/img/item/measuring-tape.png')" alt="" class="item-icons">
                 <span :key="size.id_size" v-for="size in item.size">{{size.size}}</span>
               </div>
               <div class="finished-goods__item__desc__detail">
@@ -71,15 +74,20 @@
       flex-wrap: wrap;
       padding-bottom: 350px;
     }
-
+    .item-icons{
+      width: 24px;
+      height:24px;
+      margin-right: 10px;
+    }
     &__item {
       width: 100%;
+      // padding: 10px 10px 0px;
       &__wrap {
-        width: 28%;
-        margin: 0 2.5% 5%;
+        width: 33%;
+        // margin: 0 2.5% 5%;
         position: relative;
       }
-      padding: 10px 10px 0px;
+
       &__img {
         width: 100%;
         img {
@@ -88,19 +96,34 @@
       }
       &__desc {
         padding: 10px 10px 30px;
-        &__name{
+        display: none;
+        &>div{
+          display:flex;
+          align-items: center;
+          margin-bottom: 10px;
           p{
-            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-size: 14px;
+            color:#1a1a1a;
+             margin-bottom: 0px;
+          }
+        }
+        &__name{
+          margin-bottom: 5px;
+          p{
+            margin-bottom: 0px;
+            text-transform: uppercase;
+            font-size: 16px;
           }
         }
         &__price {
-          h2 {
+          p {
             font-size: 20px;
             color: $color-red;
             text-transform: uppercase;
-            span {
-              color: $color-red;
-            }
+            // span {
+            //   color: $color-red;
+            // }
           }
         }
         &__text {
@@ -114,7 +137,7 @@
         &__size {
           display: none;
           span {
-            padding: 0 10px;
+            padding: 0 10px 0 0;
           }
         }
         &__detail {
@@ -123,13 +146,15 @@
           bottom: 0;
           left: 0;
           width: 100%;
+          margin-bottom: 0px !important;
           a {
             display: block;
             width: 100%;
             color: white;
             text-transform: uppercase;
             text-align: center;
-            background: linear-gradient(to right, #ff8486 37%, #ff9393 52%, #fff06d 87%);
+            // background: linear-gradient(to right, #ff8486 37%, #ff9393 52%, #fff06d 87%);
+            background: #1a1a1a;
           }
         }
       }
@@ -143,6 +168,7 @@
         left: 0;
         z-index: 1;
         .finished-goods__item__desc {
+          display: block;
           &__text {
             p {
               white-space: normal;
