@@ -6,16 +6,26 @@
 
 <script>
   export default {
-    name:'button-order',
+    name:'button-car',
     props:{
       items:Object
     },
     methods:{
       putCart(){
-        var good = [];
-        var good = JSON.parse(localStorage.getItem('goodCart'));
-        good.push(this.items);
-        localStorage.setItem('goodCart',JSON.stringify(good));
+        let count = 0;
+        let that = this;
+        let storageItems = JSON.parse(localStorage.getItem('car'));
+        let good = storageItems ? storageItems : [];
+        Object.keys(this.items).forEach(function(item){
+          if(!that.items[item]){
+            count++;
+          }
+          console.log(item)
+        })
+        if(!count){
+           good.push(this.items);
+           localStorage.setItem('car', JSON.stringify(good));
+        }
       }
     }
   }
