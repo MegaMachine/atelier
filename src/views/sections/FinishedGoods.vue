@@ -82,16 +82,28 @@
     &__item {
       width: 100%;
       // padding: 10px 10px 0px;
+      position:absolute;
+      
       &__wrap {
         width: 33%;
         // margin: 0 2.5% 5%;
         position: relative;
+        height:300px;
       }
 
       &__img {
         width: 100%;
+        position: relative;
+        height: 300px;
+        overflow: hidden;
         img {
           width: 100%;
+          position : absolute;
+          top: 50%;
+          left: 50%;
+          transform: translateY(-50%) translateX(-50%) scale(1);
+          transform-origin: center;
+          transition: .5s transform;
         }
       }
       &__desc {
@@ -167,6 +179,11 @@
         top: 0;
         left: 0;
         z-index: 1;
+        .finished-goods__item__img{
+          img{
+            transform: translateY(-50%) translateX(-50%) scale(1.2);
+          }
+        }
         .finished-goods__item__desc {
           display: block;
           &__text {

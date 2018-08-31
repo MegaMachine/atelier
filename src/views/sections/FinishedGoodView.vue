@@ -77,7 +77,6 @@ import goods from './../../data/goods.js'
       width: 48%;
     }
     &__img{
-
       img{
         width: 100%;
       }

@@ -15,16 +15,18 @@
             </div>
             <div class="cloth__item__desc">
               <div class="cloth__item__desc__name">
+                <img :src="require('@/assets/img/item/cloth.png')" alt="" class="item-icons">
                 <p>{{item.material_name}}</p>
               </div>
               <div class="cloth__item__desc__price">
-                <h2>{{item.price}}
+                <img :src="require('@/assets/img/item/wallet.png')" alt="" class="item-icons">
+                <p>{{item.price}}
                   <span>grn</span>
-                </h2>
+                </p>
               </div>
-              <div class="cloth__item__desc__text">
+              <!-- <div class="cloth__item__desc__text">
                 <p>{{item.description}}</p>
-              </div>
+              </div> -->
               <div class="cloth__item__desc__detail">
                 <router-link tag="a" :to="{ name:'cloth-view', params:{ id : item.id_material } }">детальніше</router-link>
               </div>
@@ -68,36 +70,62 @@ import filter from "./../../data/filter.js";
       flex-wrap: wrap;
       padding-bottom: 350px;
     }
-
+    .item-icons{
+      width: 24px;
+      height:24px;
+      margin-right: 10px;
+    }
     &__item {
       width: 100%;
       &__wrap {
-        width: 45%;
-        margin: 0 2.5% 5%;
+        width: 33%;
+        // margin: 0 2.5% 5%;
         position: relative;
+        height:175px;
       }
-      padding: 10px 10px 0px;
-      &__img {
+      // padding: 10px 10px 0px;
+       &__img {
         width: 100%;
+        position: relative;
+        height: 175px;
+        overflow: hidden;
         img {
           width: 100%;
+          position : absolute;
+          top: 50%;
+          left: 50%;
+          transform: translateY(-50%) translateX(-50%) scale(1);
+          transform-origin: center;
+          transition: .5s transform;
         }
       }
       &__desc {
         padding: 10px 10px 30px;
+        display: none;
+        &>div{
+          display:flex;
+          align-items: center;
+          margin-bottom: 10px;
+          p{
+            text-transform: uppercase;
+            font-size: 14px;
+            color:#1a1a1a;
+             margin-bottom: 0px;
+          }
+        }
         &__name{
           p{
             margin-bottom: 5px;
           }
         }
         &__price {
-          h2 {
+          p {
             font-size: 20px;
             color: $color-red;
             text-transform: uppercase;
-            span {
-              color: $color-red;
-            }
+            // span {
+            //   color: $color-red;
+            // }
           }
         }
         &__text {
@@ -120,17 +148,20 @@ import filter from "./../../data/filter.js";
           bottom: 0;
           left: 0;
           width: 100%;
+          margin-bottom: 0px !important;
           a {
             display: block;
             width: 100%;
             color: white;
             text-transform: uppercase;
             text-align: center;
-            background: linear-gradient(to right, #ff8486 37%, #ff9393 52%, #fff06d 87%);
+            // background: linear-gradient(to right, #ff8486 37%, #ff9393 52%, #fff06d 87%);
+            background: #1a1a1a;
           }
         }
       }
       &:hover {
+        
         z-index: 1;
         box-shadow: 0 0 10px 0px rgba(0, 0, 0, .3);
         background-color: #f4f0e8;
@@ -139,7 +170,13 @@ import filter from "./../../data/filter.js";
         top: 0;
         left: 0;
         z-index: 1;
+        .cloth__item__img{
+          img{
+            transform: translateY(-50%) translateX(-50%) scale(1.2);
+          }
+        }
         .cloth__item__desc {
+          display: block;
           &__text {
             p {
               white-space: normal;

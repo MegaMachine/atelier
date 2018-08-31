@@ -2,31 +2,30 @@
   <section-wrap sectionName="models" sectionTitle="Моделі" sectionContainer="container">
     <div class="row">
       <div class="col-md-3">
-        <app-filter
-        :size="filter.size"
-        :material="filter.material"
-        :category="filter.category"
-        @filter-result="takeFilterResult"></app-filter>
+        <app-filter :size="filter.size" :material="filter.material" :category="filter.category" @filter-result="takeFilterResult"></app-filter>
       </div>
       <div class="col-md-8 items">
         <div class="models__item__wrap" :key="item.id_good" v-for="(item) in viewGoods">
-          <div class="models__item">
+          <div class="models__item" @mouseover="hoverItemPadding">
             <div class="models__item__img">
-              <img :src="item.photos[0]" alt="model">
+              <img :src="require('@/assets/img/models/1.png')" :alt="item.good_name.ua">
             </div>
             <div class="models__item__desc">
               <div class="models__item__desc__name">
+                <img :src="require('@/assets/img/item/dress.png')" alt="" class="item-icons">
                 <p>{{item.good_name.ua}}</p>
               </div>
               <div class="models__item__desc__price">
-                <h2>{{item.price}}
+                <img :src="require('@/assets/img/item/wallet.png')" alt="" class="item-icons">
+                <p>{{item.price}}
                   <span>grn</span>
-                </h2>
+                </p>
               </div>
-              <div class="models__item__desc__text">
+              <!-- <div class="models__item__desc__text">
                 <p>{{item.description}}</p>
-              </div>
+              </div> -->
               <div class="models__item__desc__size">
+                <img :src="require('@/assets/img/item/measuring-tape.png')" alt="" class="item-icons">
                 <span :key="size.id_size" v-for="size in item.size">{{size.size}}</span>
               </div>
               <div class="models__item__desc__detail">
@@ -47,107 +46,27 @@
     name: 'models',
     data() {
       return {
-        viewGoods:null,
+        viewGoods: null,
         goods,
         filter,
       }
     },
-    methods:{
-      takeFilterResult(obj){
+    methods: {
+      takeFilterResult(obj) {
         this.viewGoods = obj;
+      },
+      hoverItemPadding(item){
+        console.log(item);
       }
     },
-    created(){
-      return this.viewGoods = goods;
+    created() {
+      this.viewGoods = this.goods;
     }
   }
 </script>
 
 <style scoped lang="scss">
   @import './../../assets/scss/_variable.scss';
-  // .models {
-
-  //   .items {
-  //     display: flex;
-  //     justify-content: space-between;
-  //     flex-wrap: wrap;
-  //     padding-bottom: 350px;
-  //   }
-
-  //   &__item {
-  //     &__wrap {
-  //       width: 28%;
-  //       margin: 0 2.5% 5%;
-  //       position: relative;
-  //     }
-  //     padding: 10px 10px 0px;
-  //     &__img {
-  //       width: 100%;
-  //       img {
-  //         width: 100%;
-  //       }
-  //     }
-  //     &__desc {
-  //       padding: 10px;
-  //       &__price {
-  //         h2 {
-  //           font-size: 16px;
-  //           font-weight: bold;
-  //           span {}
-  //         }
-  //       }
-  //       &__text {
-  //         p {
-  //           white-space: nowrap;
-  //           overflow: hidden;
-  //           text-overflow: ellipsis;
-  //         }
-  //       }
-  //       &__size {
-  //         display: none;
-  //         span {
-  //           padding: 0 10px;
-  //         }
-  //       }
-  //       &__detail {
-  //         display: none;
-  //         button {
-  //           width: 100%;
-  //           color: white;
-  //           border: none;
-  //           background: linear-gradient(to right, #ff8486 37%, #ff9393 52%, #fff06d 87%);
-  //         }
-  //       }
-  //     }
-  //     &:hover {
-  //       z-index: 999;
-  //       box-shadow: 0 0 10px 0px rgba(0, 0, 0, .3);
-  //       background-color: #f4f0e8;
-  //       cursor: pointer;
-  //       position: absolute;
-  //       top: 0;
-  //       left: 0;
-  //       z-index: 1;
-  //       .models__item__desc {
-  //         &__text {
-  //           p {
-  //             white-space: normal;
-  //             overflow: visible;
-  //           }
-  //         }
-  //         &__size {
-  //           display: block;
-  //           span {}
-  //         }
-  //         &__detail {
-  //           display: block;
-  //           button {}
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-
   .models {
     .items {
       display: flex;
@@ -155,36 +74,68 @@
       flex-wrap: wrap;
       padding-bottom: 350px;
     }
-
+    .item-icons{
+      width: 24px;
+      height:24px;
+      margin-right: 10px;
+    }
     &__item {
       width: 100%;
+      // padding: 10px 10px 0px;
+      position:absolute;
+      
       &__wrap {
-        width: 28%;
-        margin: 0 2.5% 5%;
+        width: 33%;
+        // margin: 0 2.5% 5%;
         position: relative;
+        height:300px;
       }
-      padding: 10px 10px 0px;
+
       &__img {
         width: 100%;
+        position: relative;
+        height: 300px;
+        overflow: hidden;
         img {
           width: 100%;
+          position : absolute;
+          top: 50%;
+          left: 50%;
+          transform: translateY(-50%) translateX(-50%) scale(1);
+          transform-origin: center;
+          transition: .5s transform;
         }
       }
       &__desc {
         padding: 10px 10px 30px;
-        &__name{
+        display: none;
+        &>div{
+          display:flex;
+          align-items: center;
+          margin-bottom: 10px;
           p{
-            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-size: 14px;
+            color:#1a1a1a;
+             margin-bottom: 0px;
+          }
+        }
+        &__name{
+          margin-bottom: 5px;
+          p{
+            margin-bottom: 0px;
+            text-transform: uppercase;
+            font-size: 16px;
           }
         }
         &__price {
-          h2 {
+          p {
             font-size: 20px;
             color: $color-red;
             text-transform: uppercase;
-            span {
-              color: $color-red;
-            }
+            // span {
+            //   color: $color-red;
+            // }
           }
         }
         &__text {
@@ -198,7 +149,7 @@
         &__size {
           display: none;
           span {
-            padding: 0 10px;
+            padding: 0 10px 0 0;
           }
         }
         &__detail {
@@ -207,13 +158,15 @@
           bottom: 0;
           left: 0;
           width: 100%;
+          margin-bottom: 0px !important;
           a {
             display: block;
             width: 100%;
             color: white;
             text-transform: uppercase;
             text-align: center;
-            background: linear-gradient(to right, #ff8486 37%, #ff9393 52%, #fff06d 87%);
+            // background: linear-gradient(to right, #ff8486 37%, #ff9393 52%, #fff06d 87%);
+            background: #1a1a1a;
           }
         }
       }
@@ -226,7 +179,13 @@
         top: 0;
         left: 0;
         z-index: 1;
-        .finished-goods__item__desc {
+        .models__item__img{
+          img{
+            transform: translateY(-50%) translateX(-50%) scale(1.2);
+          }
+        }
+        .models__item__desc {
+          display: block;
           &__text {
             p {
               white-space: normal;
@@ -239,7 +198,6 @@
           }
           &__detail {
             display: block;
-            button {}
           }
         }
       }
