@@ -6,10 +6,16 @@
       <div class="col-12 col-md-6">
         <div class="finished-good-view__info">
           <div>
-            <div class="finished-good-view__info__img">
-              <img :src="require('@/assets/img/models/1.png')" :alt="good[0].good_name.ua">
+            <carousel 
+              class="finished-good-view__info__img"
+              :navigationEnabled="true"
+              :perPage="1"
+              :paginationEnabled="false">
+              <slide :key="item" v-for="item in [1,2,3]">
+                <img :src="require('@/assets/img/models/1.png')" :alt="good[0].good_name.ua">
+              </slide>
               <p></p>
-            </div>
+            </carousel>
             <div class="finished-good-view__info__text">
               <h2>{{good[0].good_name.ua}}</h2>
               <div class="finished-good-view__info__size">
@@ -38,7 +44,7 @@
               </div>
         </div>
         <div class="finished-good-view__buttons">
-          <button-wishlist :items="clothOptions"></button-wishlist>
+          <!-- <button-wishlist :items="clothOptions"></button-wishlist> -->
           <button-car :items="goodOptions"></button-car>
         </div>
       </div>
@@ -47,12 +53,14 @@
 </template>
 
 <script>
-import goods from './../../data/goods.js'
+import goods from './../../data/goods.js';
+import cloths from './../../data/cloth.js';
   export default {
     name:"finished-good-view",
     data(){
       return{
         good:null,
+        cloth: [],
         goods,
         goodOptions:{
           id_good:this.$route.params.id,
@@ -61,7 +69,14 @@ import goods from './../../data/goods.js'
       }
     },
     created(){
-      this.good = _.filter(goods,{id_good:this.$route.params.id})
+      var that = this;
+      this.good = _.filter(goods,{ id_good:this.$route.params.id });
+      this.good[0].material.map(function(item){
+        that.cloth.push(_.find(cloths, {id_material: item.id_material}))  
+      })
+      //this.cloth = 
+      //_.filter(cloths,{ id_material: this.good[0].material.id_material });
+      console.log(this.cloth)
     }
   }
 </script>
@@ -153,6 +168,9 @@ import goods from './../../data/goods.js'
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  }
+  .VueCarousel{
+    padding-top:0px;
   }
 }
 </style>

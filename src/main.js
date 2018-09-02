@@ -16,6 +16,8 @@ import ClothFilter from './views/ClothFilter.vue';
 import ButtonCar from './views/ButtonCar.vue';
 import ButtonWishlist from './views/ButtonWishlist.vue';
 import VSelect from 'vue-select';
+import VueCarousel from 'vue-carousel';
+import { Carousel, Slide } from 'vue-carousel';
 
 //Styles
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
@@ -32,8 +34,13 @@ Vue.component('VSelect',VSelect);
 Vue.component('ClothFilter',ClothFilter);
 Vue.component('ButtonCar',ButtonCar);
 Vue.component('ButtonWishlist',ButtonWishlist);
+Vue.component('Carousel',Carousel);
+Vue.component('Slide', Slide);
+
+//Use modules
 Vue.use(VueLodash,'lodash');
 Vue.use(BootstrapVue);
+Vue.use(VueCarousel);
 
 
 new Vue({

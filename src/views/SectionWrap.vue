@@ -1,5 +1,5 @@
 <template>
-  <section :id="sectionName" :class="sectionName">
+  <section :id="sectionName" :class="sectionName" class="section-wrap">
     <button-back></button-back>
     <div :class="sectionContainer">
       <div class="row">
@@ -34,7 +34,7 @@
 </script>
 
 <style scoped>
- section{
+ section.section-wrap{
   padding-top: 20vh;
   min-height: 100vh;
   height: 100%;
