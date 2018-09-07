@@ -4,15 +4,37 @@
     <div class="row">
       <div class="col-4">
         <div class="model-view__info">
-          <div class="model-view__info__img"><img :src="require('@/assets/img/models/1.png')" alt="name"></div>
-          <div class="model-view__info__desc"></div>
-          <div class="model-view__info__buttons"></div>
+                                <carousel 
+              class="model-view__info__img"
+              :navigationEnabled="true"
+              :perPage="1"
+              :paginationEnabled="false">
+              <slide :key="item" v-for="item in [1,2,3]">
+                <img :src="require('@/assets/img/models/1.png')">
+              </slide>
+              <p></p>
+            </carousel>
+          <div class="model-view__info__desc">
+            <p>{{good.description}}</p>
+          </div>
+           <div class="model-view__info__size">
+                <label :key="size.id_size" v-for="size in good.size">
+                  <input v-model="goodOptions.id_size" :value="size.id_size" name="good-size" type="radio">
+                  <span>{{size.size}}</span>
+                  </label>
+              </div>
+          <div class="model-view__info__buttons">
+            <button-wishlist :items="goodOptions"></button-wishlist>
+            <button-car :items="goodOptions"></button-car>
+          </div>
         </div>
       </div>
       <div class="col-8">
          <div class="model-view__cloth">
            <div class="model-view__cloth__item" 
-            :key = "index" 
+            :key="index"
+            :value="param.id_material"
+            @click="getChoiceCloth"
             v-for="(param,index) in cloth">
              <img :src="require('@/assets/img/cloth/1.png')" alt="">
              <span>{{param.material_name}}</span>
@@ -33,16 +55,31 @@ import cloths from './../../data/cloth.js';
         good:null,
         cloth: [],
         goods,
+        goodOptions:{
+          id_good:Number(this.$route.params.id),
+          id_size:null,
+          id_cloth:null
+        }
       }
     },
     created(){
       let that = this;
-      this.good = _.find(goods,{id_good:this.$route.params.id})
+      this.good = _.find(goods,{id_good:Number(this.$route.params.id)})
       this.good.material.map(function(item){
         that.cloth.push(_.find(cloths, {id_material: item.id_material}))  
-      })
-      console.log(this.cloth)
+      })    
     },
+    methods:{
+      getChoiceCloth(event){
+        let item = event.currentTarget;
+        let items = document.querySelectorAll('.model-view__cloth__item');
+        this.goodOptions.id_cloth = Number(item.getAttribute('value'));
+        items.forEach(element => {
+          element.classList.remove('active');
+        });
+        item.classList.add('active');
+      }
+    }
   }
 </script>
 
@@ -50,15 +87,12 @@ import cloths from './../../data/cloth.js';
 @import './../../assets/scss/_variable.scss';
   .model-view{
   &__info{
-    display: flex;
     width: 100%;
-    justify-content: space-between;
-    &>div{
-      width: 48%;
-    }
     &__img{
+      width: 100%;
+      text-align: center;
       img{
-        width: 100%;
+        width: 80%;
       }
     }
     &__text{
