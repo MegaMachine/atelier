@@ -16,6 +16,7 @@
                 <div><img :src="require('@/assets/img/item/cloth.png')" alt="" class="item-icons"><p>{{item.cloth.material_name}}</p></div>
                 <div><img :src="require('@/assets/img/item/measuring-tape.png')" alt="" class="item-icons"><span>{{item.size.size}}</span></div>
                 <div><img :src="require('@/assets/img/item/wallet.png')" alt="" class="item-icons"><span>{{item.price}} грн.</span></div>
+                
               </div>
             </div>
           </div>
@@ -36,6 +37,7 @@
                 <div><img :src="require('@/assets/img/item/cloth.png')" alt="" class="item-icons"><p>{{item.cloth.material_name}}</p></div>
                 <div><img :src="require('@/assets/img/item/measuring-tape.png')" alt="" class="item-icons"><span>{{item.size.size}}</span></div>
                 <div><img :src="require('@/assets/img/item/wallet.png')" alt="" class="item-icons"><span>{{item.price}} грн.</span></div>
+                <button class="to-car" @click="toCar">в кошик</button>
               </div>
             </div>
           </div>
@@ -123,6 +125,16 @@
       },
       deleteCar(event){
         this.deleteItem(event,'car');
+      },
+      toCar(event){
+        let item = event.currentTarget;
+        let fatherItem = item.closest('.private-cabinet__block__content__item');
+        let itemIndex = Number(fatherItem.attributes['data-index'].value);
+        let storageCar = JSON.parse(localStorage.getItem('car'))
+        storageCar.push(this.wishlist[itemIndex]);
+        localStorage.removeItem('car');
+        localStorage.setItem('car', JSON.stringify(storageCar));
+        this.deleteItem(event,'wishlist');
       }
     },
   }
