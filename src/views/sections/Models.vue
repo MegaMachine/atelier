@@ -6,7 +6,7 @@
       </div>
       <div class="col-md-8 items">
         <div class="models__item__wrap" :key="item.id_good" v-for="(item) in viewGoods">
-          <div class="models__item" @mouseover="hoverItemPadding">
+          <div class="models__item">
             <div class="models__item__img">
               <img :src="require('@/assets/img/models/1.png')" :alt="item.good_name.ua">
             </div>
@@ -55,9 +55,6 @@
       takeFilterResult(obj) {
         this.viewGoods = obj;
       },
-      hoverItemPadding(item){
-        console.log(item);
-      }
     },
     created() {
       this.viewGoods = this.goods;
