@@ -2,18 +2,18 @@
   <section-wrap sectionName="models" sectionTitle="Моделі" sectionContainer="container">
     <div class="row">
       <div class="col-md-3">
-        <app-filter :size="filter.size" :material="filter.material" :category="filter.category" @filter-result="takeFilterResult"></app-filter>
+        <app-filter :purpose="filter.purpose" :material="filter.material" :category="filter.category" @filter-result="takeFilterResult"></app-filter>
       </div>
       <div class="col-md-8 items">
-        <div class="models__item__wrap" :key="item.id_good" v-for="(item) in viewGoods">
+        <div class="models__item__wrap" :key="item.id_model" v-for="(item) in viewModels">
           <div class="models__item">
             <div class="models__item__img">
-              <img :src="require('@/assets/img/models/1.png')" :alt="item.good_name.ua">
+              <img :src="require('@/assets/img/models/1.png')" :alt="item.model_name.ua">
             </div>
             <div class="models__item__desc">
               <div class="models__item__desc__name">
                 <img :src="require('@/assets/img/item/dress.png')" alt="" class="item-icons">
-                <p>{{item.good_name.ua}}</p>
+                <p>{{item.model_name.ua}}</p>
               </div>
               <div class="models__item__desc__price">
                 <img :src="require('@/assets/img/item/wallet.png')" alt="" class="item-icons">
@@ -21,15 +21,12 @@
                   <span>grn</span>
                 </p>
               </div>
-              <!-- <div class="models__item__desc__text">
-                <p>{{item.description}}</p>
-              </div> -->
               <div class="models__item__desc__size">
                 <img :src="require('@/assets/img/item/measuring-tape.png')" alt="" class="item-icons">
                 <span :key="size.id_size" v-for="size in item.size">{{size.size}}</span>
               </div>
               <div class="models__item__desc__detail">
-                <router-link :to="{ name:'model-view', params:{ id : item.id_good } }">детальніше</router-link>
+                <router-link :to="{ name:'model-view', params:{ id : item.id_model } }">детальніше</router-link>
               </div>
             </div>
           </div>
@@ -40,24 +37,24 @@
 </template>
 
 <script>
-  import goods from "./../../data/goods.js";
+  import models from "./../../data/models.js";
   import filter from "./../../data/filter.js";
   export default {
     name: 'models',
     data() {
       return {
-        viewGoods: null,
-        goods,
+        viewModels: null,
+        models,
         filter,
       }
     },
     methods: {
       takeFilterResult(obj) {
-        this.viewGoods = obj;
+        this.viewModels = obj;
       },
     },
     created() {
-      this.viewGoods = this.goods;
+      this.viewModels = this.models;
     }
   }
 </script>

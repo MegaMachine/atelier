@@ -13,7 +13,7 @@
         </label>
       </div>
     </div>
-    <div class="filter__item">
+    <!-- <div class="filter__item">
       <h2>Сезон</h2>
       <div>
         <label class="filter__item__sun">
@@ -29,7 +29,7 @@
           <span></span>
         </label>
       </div>
-    </div>
+    </div> -->
     <div class="filter__item select">
       <h2>Категорія</h2>
       <v-select v-model="filterResult.selects.category"  :options="selectOptionsCategory"></v-select>
@@ -39,70 +39,79 @@
       <v-select v-model="filterResult.selects.material" :options="selectOptionsMaterial"></v-select>
     </div>
     <div class="filter__item select">
-      <h2 @click="filterItem">Розмір</h2>
-      <v-select v-model="filterResult.selects.size"  :options="selectOptionsSize"></v-select>
+      <h2 @click="filterItem">Призначення</h2>
+      <v-select v-model="filterResult.selects.purpose"  :options="selectOptionsPurpose"></v-select>
     </div>
     <button @click.prevent="sendData">Фільтрувати</button>
   </div>
 </template>
 
 <script>
-  import goods from './../data/goods.js';
+  import models from './../data/models.js';
   export default {
     name: "app-filter",
     data() {
       return {
-        goods,
-        viewGoods: [],
+        models,
+        viewModels: [],
         filterResult: {
           inputs:{
-            season : null,
             contingent : null
           },
           selects:{
             category : null,
+            purpose : null,
             material : null,
-            size : null,
           }
         }
       }
     },
     props: {
       material: Array,
-      size: Array,
+      purpose: Array,
       category: Array
     },
    
     methods: {
       filterItem() {  
-        var vm = this;
-        vm.viewGoods = [];
-        var obj = {};
-        _.filter(vm.filterResult.inputs, function(value, key){
-          if(value){
-            obj[key] = Number(value);
-          }
-        })
-        _.filter(vm.filterResult.selects, function(value, key){
-          var obj2 = {};
-          if(value){
-            obj[key] = [];
-            obj2['id_' + key] = value.value;
-            obj[key][0] = obj2
-          }
-        })
-        vm.viewGoods = _.filter(vm.goods, obj) //{material:[{id_material:3}],size:[{id_size : 3}]}
+        // var vm = this;
+        // vm.viewModels = [];
+        // var obj = {};
+        // _.filter(vm.filterResult.inputs, function(value, key){
+        //   if(value){
+        //     obj[key] = Number(value);
+        //   }
+        // })
+        // _.filter(vm.filterResult.selects, function(value, key){
+        //   var obj2 = {};
+        //   if(value){
+        //     obj[key] = [];
+        //     obj2['id_' + key] = value.value;
+        //     obj[key][0] = obj2
+        //   }
+        // })
+        // vm.viewModels = _.filter(vm.goods, obj)
+        // console.log(_.pickBy(this.filterResult, _.identity));
+        let obj = {
+          category:this.filterResult.selects.category.value,
+          purpose:this.filterResult.selects.purpose.value,
+          contingent:this.filterResult.inputs.contingent,
+          id_material:[this.filterResult.selects.material.value] 
+        }
+        let findObj = _.pickBy(obj, _.identity);
+
+        this.viewModels = _.filter(this.models, findObj);
       },
       sendData(){
         this.filterItem();
-        this.$emit('filter-result', this.viewGoods)
+        this.$emit('filter-result', this.viewModels)
       }
     },
     computed: {
-      selectOptionsSize() {
-        return this.size.map(g => ({
-          label: g.size.toString(),
-          value: g.id_size
+      selectOptionsPurpose() {
+        return this.purpose.map(g => ({
+          label: g.purpose.toString(),
+          value: g.id_purpose
         }))
       },
       selectOptionsMaterial() {
@@ -112,9 +121,9 @@
         }))
       },
       selectOptionsCategory() {
-        return this.category.map(g => ({
-          label: g.category_name.toString(),
-          value: g.id_category
+        return this.article.map(g => ({
+          label: g.caregory_name.toString(),
+          value: g.id_article
         }))
       }
     }
