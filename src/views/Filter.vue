@@ -71,36 +71,17 @@
       purpose: Array,
       category: Array
     },
-   
     methods: {
       filterItem() {  
-        // var vm = this;
-        // vm.viewModels = [];
-        // var obj = {};
-        // _.filter(vm.filterResult.inputs, function(value, key){
-        //   if(value){
-        //     obj[key] = Number(value);
-        //   }
-        // })
-        // _.filter(vm.filterResult.selects, function(value, key){
-        //   var obj2 = {};
-        //   if(value){
-        //     obj[key] = [];
-        //     obj2['id_' + key] = value.value;
-        //     obj[key][0] = obj2
-        //   }
-        // })
-        // vm.viewModels = _.filter(vm.goods, obj)
-        // console.log(_.pickBy(this.filterResult, _.identity));
         let obj = {
-          category:this.filterResult.selects.category.value,
-          purpose:this.filterResult.selects.purpose.value,
-          contingent:this.filterResult.inputs.contingent,
-          id_material:[this.filterResult.selects.material.value] 
-        }
+          contingent : this.filterResult.inputs.contingent ? Number(this.filterResult.inputs.contingent) : null,
+          category : this.filterResult.selects.category ? Number(this.filterResult.selects.category.value) : null,
+          purpose : this.filterResult.selects.purpose ? Number(this.filterResult.selects.purpose.value) : null,
+          id_material : this.filterResult.selects.material ? [Number(this.filterResult.selects.material.value)] : null 
+        };
         let findObj = _.pickBy(obj, _.identity);
-
         this.viewModels = _.filter(this.models, findObj);
+        console.log(obj)
       },
       sendData(){
         this.filterItem();
@@ -110,7 +91,7 @@
     computed: {
       selectOptionsPurpose() {
         return this.purpose.map(g => ({
-          label: g.purpose.toString(),
+          label: g.purpose_name.toString(),
           value: g.id_purpose
         }))
       },
@@ -121,11 +102,14 @@
         }))
       },
       selectOptionsCategory() {
-        return this.article.map(g => ({
-          label: g.caregory_name.toString(),
-          value: g.id_article
+        return this.category.map(g => ({
+          label: g.category_name.toString(),
+          value: g.id_category
         }))
       }
+    },
+    mounted(){
+      console.log(this.filterResult)
     }
   };
 </script>
