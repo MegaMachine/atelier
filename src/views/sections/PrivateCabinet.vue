@@ -7,7 +7,7 @@
             <img src="./../../assets/img/private-cabinet/order.png" alt="">
             <h2>МОЇ ЗАМОВЛЕННЯ</h2>
           </div>
-          <div class="private-cabinet__block__content__item">
+          <div class="private-cabinet__block__content__items">
             <div :key="index" class="private-cabinet__block__content__item" v-for="(item,index) in viewCar">
               <div><img :src="require('@/assets/img/models/1.png')" alt=""></div>
               <div>
@@ -39,7 +39,7 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-4">
+      <div class="col-12 col-md-4 d-none">
         <div class="private-cabinet__block">
           <div class="private-cabinet__block__title">
             <img src="./../../assets/img/private-cabinet/puzzle.png" alt="">
@@ -115,7 +115,15 @@
       padding: 30px 15px;
       background: rgba(255, 255, 255, .3);
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, .3);
-
+      &__content{
+        &__item{
+          display:flex;
+          background: #efe9dd;
+          &>div:last-child{
+            padding: 15px;
+          }
+        }
+      }
       &__title {
         text-align: center;
 
