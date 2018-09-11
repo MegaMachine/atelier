@@ -110,7 +110,7 @@ import filter from "./../../data/filter.js";
             text-transform: uppercase;
             font-size: 14px;
             color:#1a1a1a;
-             margin-bottom: 0px;
+            margin-bottom: 0px;
           }
         }
         &__name{

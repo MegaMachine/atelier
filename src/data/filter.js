@@ -78,5 +78,23 @@ module.exports = {
       "id_composition": 4,
       "composition_name": "Трикотаж",
     },
+  ],
+  purpose:[
+    {
+      "id_purpose": 1,
+      "purpose_name": "Вечірнє",
+    },
+    {
+      "id_purpose": 2,
+      "purpose_name": "Не вечірнє",
+    },
+    {
+      "id_purpose": 3,
+      "purpose_name": "Кежуал",
+    },
+    {
+      "id_purpose": 4,
+      "purpose_name": "Спорт",
+    },
   ]
 }

@@ -7,14 +7,16 @@
             <img src="./../../assets/img/private-cabinet/order.png" alt="">
             <h2>МОЇ ЗАМОВЛЕННЯ</h2>
           </div>
-          <div class="private-cabinet__block__content__items">
-            <div :key="index" class="private-cabinet__block__content__item" v-for="(item,index) in viewCar">
+          <div class="private-cabinet__block__content">
+            <div :key="index" :data-index="index" class="private-cabinet__block__content__item" v-for="(item,index) in viewCar">
+              <button class="delete-item" @click="deleteCar">x</button>
               <div><img :src="require('@/assets/img/models/1.png')" alt=""></div>
               <div>
-                <h2>{{item.name}}</h2>
-                <p>{{item.cloth.material_name}}</p>
-                <span>{{item.size.size}}</span>
-                <span>{{item.price}}</span>
+                <div><img :src="require('@/assets/img/item/dress.png')" alt="" class="item-icons"><h2>{{item.name}}</h2></div>
+                <div><img :src="require('@/assets/img/item/cloth.png')" alt="" class="item-icons"><p>{{item.cloth.material_name}}</p></div>
+                <div><img :src="require('@/assets/img/item/measuring-tape.png')" alt="" class="item-icons"><span>{{item.size.size}}</span></div>
+                <div><img :src="require('@/assets/img/item/wallet.png')" alt="" class="item-icons"><span>{{item.price}} грн.</span></div>
+                
               </div>
             </div>
           </div>
@@ -27,13 +29,15 @@
             <h2>УЛЮБЛЕНІ</h2>
           </div>
           <div class="private-cabinet__block__content">
-                        <div :key="index" class="private-cabinet__block__content__item" v-for="(item,index) in viewWishlist">
+            <div :key="index" :data-index="index" class="private-cabinet__block__content__item" v-for="(item,index) in viewWishlist">
+              <button class="delete-item" @click="deleteWishList">x</button>
               <div><img :src="require('@/assets/img/models/1.png')" alt=""></div>
               <div>
-                <h2>{{item.name}}</h2>
-                <p>{{item.cloth.material_name}}</p>
-                <span>{{item.size.size}}</span>
-                <span>{{item.price}}</span>
+                <div><img :src="require('@/assets/img/item/dress.png')" alt="" class="item-icons"><h2>{{item.name}}</h2></div>
+                <div><img :src="require('@/assets/img/item/cloth.png')" alt="" class="item-icons"><p>{{item.cloth.material_name}}</p></div>
+                <div><img :src="require('@/assets/img/item/measuring-tape.png')" alt="" class="item-icons"><span>{{item.size.size}}</span></div>
+                <div><img :src="require('@/assets/img/item/wallet.png')" alt="" class="item-icons"><span>{{item.price}} грн.</span></div>
+                <button class="to-car" @click="toCar">в кошик</button>
               </div>
             </div>
           </div>
@@ -68,16 +72,19 @@
       }
     },
     created() {
-      this.wishlist = JSON.parse(localStorage.getItem('wishlist'));
-      this.car = JSON.parse(localStorage.getItem('car'));
+      this.takeItems();
       if(this.car) this.filterItems(this.car, this.viewCar);
       if(this.wishlist) this.filterItems(this.wishlist, this.viewWishlist);
       
     },
     methods: {
+      takeItems(){
+        this.wishlist = JSON.parse(localStorage.getItem('wishlist'));
+        this.car = JSON.parse(localStorage.getItem('car'));
+      },
       filterItems(storageObj, viewArray) {
         let that = this;
-        let supportObj = {};
+        
         storageObj.map(function (item1) {
           let findObj = {
             id_good: item1.id_good,
@@ -88,14 +95,46 @@
               id_size: item1.id_size
             }]
           }
-          findObj = that._.find(that.goods,findObj) ;
-          supportObj.name = findObj.good_name.ua;
-          supportObj.photo = findObj.photos[0];
-          supportObj.price = findObj.price;
-          supportObj.size = that._.find(findObj.size,{id_size: item1.id_size})
-          supportObj.cloth = that._.find(findObj.material,{id_material: item1.id_cloth});  
+          let findObjResult = that._.find(that.goods,findObj) ;
+          let supportObj = {};
+          supportObj.name = findObjResult.good_name.ua;
+          supportObj.photo = findObjResult.photos[0];
+          supportObj.price = findObjResult.price;
+          supportObj.size = that._.find(findObjResult.size,{id_size: item1.id_size})
+          supportObj.cloth = that._.find(findObjResult.material,{id_material: item1.id_cloth});  
           viewArray.push(supportObj);
         })
+      },
+      deleteItem(event, storageName){
+        let item = event.currentTarget;
+        let fatherItem = item.closest('.private-cabinet__block__content__item');
+        let itemIndex = Number(fatherItem.attributes['data-index'].value);
+        let storage = JSON.parse(localStorage.getItem(storageName));
+        localStorage.removeItem(storageName)
+        storage.splice(itemIndex,1);
+        console.log(storage)
+        localStorage.setItem(storageName, JSON.stringify(storage));
+        this.viewCar = [];
+        this.viewWishlist = [];
+        this.takeItems();
+        if(this.car) this.filterItems(this.car, this.viewCar);
+        if(this.wishlist) this.filterItems(this.wishlist, this.viewWishlist);
+      },
+      deleteWishList(event){
+        this.deleteItem(event,'wishlist');
+      },
+      deleteCar(event){
+        this.deleteItem(event,'car');
+      },
+      toCar(event){
+        let item = event.currentTarget;
+        let fatherItem = item.closest('.private-cabinet__block__content__item');
+        let itemIndex = Number(fatherItem.attributes['data-index'].value);
+        let storageCar = JSON.parse(localStorage.getItem('car'))
+        storageCar.push(this.wishlist[itemIndex]);
+        localStorage.removeItem('car');
+        localStorage.setItem('car', JSON.stringify(storageCar));
+        this.deleteItem(event,'wishlist');
       }
     },
   }
@@ -107,7 +146,11 @@
   .flex-box {
     justify-content: space-between;
   }
-
+  .item-icons{
+    width: 24px;
+    height:24px;
+    margin-right: 10px;
+  }
   .private-cabinet {
     background: url('./../../assets/img/home/home-background.jpg') fixed;
 
@@ -126,7 +169,7 @@
       }
       &__title {
         text-align: center;
-
+        margin-bottom: 50px;
         img {
           margin-bottom: 15px;
         }
@@ -134,6 +177,56 @@
         h2 {
           font-family: $font-a;
           font-size: 1.5rem;
+        }
+      }
+      &__content{
+        &__item{
+          display: flex;
+          margin-bottom: 20px;
+          width: 100%;
+          position: relative;
+          .delete-item{
+            position: absolute;
+            right:0;
+            top:0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0px;
+            width: 24px;
+            height: 24px;
+            background: #1a1a1a;
+            color:$color-white;
+            border: none;
+          }
+          &>div:first-child{
+            width: 40%;
+            img{
+              width: 100%;
+            }
+          }
+          &>div:last-child{
+            background: #efe9dd;
+            font-size: 12px;
+            color:#1a1a1a;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            width: 60%;
+            p,h2, span{
+              margin: 0;
+             
+            }
+            &>div{
+              display:flex;
+              align-items: center;
+              margin-bottom: 10px;
+            }
+            h2{
+              font-family: $font-a;
+              font-size: 20px;
+            }
+          }
         }
       }
     }
