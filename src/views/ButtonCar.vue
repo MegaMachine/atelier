@@ -16,11 +16,12 @@
         let that = this;
         let storageItems = JSON.parse(localStorage.getItem('car'));
         let good = storageItems ? storageItems : [];
+        console.log(that.items)
         Object.keys(this.items).forEach(function(item){
           if(!that.items[item]){
             count++;
           }
-          console.log(item)
+          
         })
         if(!count){
            good.push(this.items);

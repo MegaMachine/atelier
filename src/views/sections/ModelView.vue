@@ -15,17 +15,17 @@
               <p></p>
             </carousel>
           <div class="model-view__info__desc">
-            <p>{{good.description}}</p>
+            <p>{{model.description}}</p>
           </div>
            <div class="model-view__info__size">
-                <label :key="size.id_size" v-for="size in good.size">
-                  <input v-model="goodOptions.id_size" :value="size.id_size" name="good-size" type="radio">
+                <label :key="size.id_size" v-for="size in filter.size">
+                  <input v-model="modelOptions.id_size" :value="size.id_size" name="model-size" type="radio">
                   <span>{{size.size}}</span>
                   </label>
               </div>
           <div class="model-view__info__buttons">
-            <button-wishlist :items="goodOptions"></button-wishlist>
-            <button-car :items="goodOptions"></button-car>
+            <button-wishlist :items="modelOptions"></button-wishlist>
+            <button-car :items="modelOptions"></button-car>
           </div>
         </div>
       </div>
@@ -46,17 +46,20 @@
 </template>
 
 <script>
-import goods from './../../data/goods.js';
+
+import models from './../../data/models.js';
 import cloths from './../../data/cloth.js';
+import filter from './../../data/filter.js';
+
   export default {
     name:"model-view",
     data(){
       return{
-        good:null,
+        model:null,
         cloth: [],
-        goods,
-        goodOptions:{
-          id_good:Number(this.$route.params.id),
+        filter,
+        modelOptions:{
+          id_model:Number(this.$route.params.id),
           id_size:null,
           id_cloth:null
         }
@@ -64,16 +67,16 @@ import cloths from './../../data/cloth.js';
     },
     created(){
       let that = this;
-      this.good = _.find(goods,{id_good:Number(this.$route.params.id)})
-      this.good.material.map(function(item){
-        that.cloth.push(_.find(cloths, {id_material: item.id_material}))  
+      this.model = _.find(models,{id_model:Number(this.$route.params.id)})
+      this.model.id_material.forEach(function(item){
+        that.cloth.push(_.find(cloths, {id_material: item}))  
       })    
     },
     methods:{
       getChoiceCloth(event){
         let item = event.currentTarget;
         let items = document.querySelectorAll('.model-view__cloth__item');
-        this.goodOptions.id_cloth = Number(item.getAttribute('value'));
+        this.modelOptions.id_cloth = Number(item.getAttribute('value'));
         items.forEach(element => {
           element.classList.remove('active');
         });
