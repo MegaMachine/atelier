@@ -61,7 +61,8 @@ import filter from './../../data/filter.js';
         modelOptions:{
           id_model:Number(this.$route.params.id),
           id_size:null,
-          id_cloth:null
+          id_cloth:null,
+          id_good:true
         }
       }
     },

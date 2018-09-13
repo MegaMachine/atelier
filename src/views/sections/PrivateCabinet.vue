@@ -13,8 +13,8 @@
               <div><img :src="require('@/assets/img/models/1.png')" alt=""></div>
               <div>
                 <div><img :src="require('@/assets/img/item/dress.png')" alt="" class="item-icons"><h2>{{item.name}}</h2></div>
-                <div><img :src="require('@/assets/img/item/cloth.png')" alt="" class="item-icons"><p>{{item.cloth.material_name}}</p></div>
-                <div><img :src="require('@/assets/img/item/measuring-tape.png')" alt="" class="item-icons"><span>{{item.size.size}}</span></div>
+                <div><img :src="require('@/assets/img/item/cloth.png')" alt="" class="item-icons"><p>{{item.cloth}}</p></div>
+                <div><img :src="require('@/assets/img/item/measuring-tape.png')" alt="" class="item-icons"><span>{{item.size}}</span></div>
                 <div><img :src="require('@/assets/img/item/wallet.png')" alt="" class="item-icons"><span>{{item.price}} грн.</span></div>
                 
               </div>
@@ -34,8 +34,8 @@
               <div><img :src="require('@/assets/img/models/1.png')" alt=""></div>
               <div>
                 <div><img :src="require('@/assets/img/item/dress.png')" alt="" class="item-icons"><h2>{{item.name}}</h2></div>
-                <div><img :src="require('@/assets/img/item/cloth.png')" alt="" class="item-icons"><p>{{item.cloth.material_name}}</p></div>
-                <div><img :src="require('@/assets/img/item/measuring-tape.png')" alt="" class="item-icons"><span>{{item.size.size}}</span></div>
+                <div><img :src="require('@/assets/img/item/cloth.png')" alt="" class="item-icons"><p>{{item.cloth}}</p></div>
+                <div><img :src="require('@/assets/img/item/measuring-tape.png')" alt="" class="item-icons"><span>{{item.size}}</span></div>
                 <div><img :src="require('@/assets/img/item/wallet.png')" alt="" class="item-icons"><span>{{item.price}} грн.</span></div>
                 <button class="to-car" @click="toCar">в кошик</button>
               </div>
@@ -59,12 +59,14 @@
 </template>
 
 <script>
-  import goods from './../../data/goods.js';
+  import models from './../../data/models.js';
+  import filter from './../../data/filter.js';
+  import cloth from './../../data/cloth.js';
   export default {
     name: 'private-cabinet',
     data() {
       return {
-        goods,
+        models,
         car: null,
         wishlist: null,
         viewCar: [],
@@ -87,7 +89,7 @@
         
         storageObj.map(function (item1) {
           let findObj = {
-            id_good: item1.id_good,
+            id_model: item1.id_model,
             material: [{
               id_material: item1.id_cloth
             }],
@@ -95,13 +97,16 @@
               id_size: item1.id_size
             }]
           }
-          let findObjResult = that._.find(that.goods,findObj) ;
+          let findInModel = that._.find(that.models,{id_model:item1.id_model});
+          let findInCloth = that._.find(cloth,{id_material:item1.id_cloth});
+          let findInSize = that._.find(filter.size,{id_size:item1.id_size});
+
           let supportObj = {};
-          supportObj.name = findObjResult.good_name.ua;
-          supportObj.photo = findObjResult.photos[0];
-          supportObj.price = findObjResult.price;
-          supportObj.size = that._.find(findObjResult.size,{id_size: item1.id_size})
-          supportObj.cloth = that._.find(findObjResult.material,{id_material: item1.id_cloth});  
+          supportObj.name = findInModel.model_name.ua;
+          supportObj.photo = findInModel.photos[0];
+          supportObj.price = findInCloth.price;
+          supportObj.size = findInSize.size; //that._.find(findObjResult.size,{id_size: item1.id_size})
+          supportObj.cloth = findInCloth.material_name;//that._.find(findObjResult.material,{id_material: item1.id_cloth});  
           viewArray.push(supportObj);
         })
       },

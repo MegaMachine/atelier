@@ -27,6 +27,7 @@
            good.push(this.items);
            localStorage.setItem('car', JSON.stringify(good));
         }
+        console.log(this.items)
       }
     }
   }

@@ -11,8 +11,9 @@ import VueLodash from 'vue-lodash'
 import HeaderBar from './views/HeaderBar.vue';
 import ButtonBack from './views/ButtonBack.vue';
 import SectionWrap from './views/SectionWrap.vue';
-import AppFilter from './views/Filter.vue';
-import ClothFilter from './views/ClothFilter.vue';
+import AppFilterModels from './views/FilterModels.vue';
+import AppFilterGoods from './views/FilterGoods.vue';
+import AppFilterCloths from './views/FilterCloths.vue';
 import ButtonCar from './views/ButtonCar.vue';
 import ButtonWishlist from './views/ButtonWishlist.vue';
 import VSelect from 'vue-select';
@@ -29,9 +30,11 @@ Vue.config.productionTip = false
 Vue.component('HeaderBar',HeaderBar);
 Vue.component('ButtonBack',ButtonBack);
 Vue.component('SectionWrap',SectionWrap);
-Vue.component('AppFilter', AppFilter);
+Vue.component('AppFilterModels', AppFilterModels);
+Vue.component('AppFilterGoods', AppFilterGoods);
+Vue.component('AppFilterCloths',AppFilterCloths);
 Vue.component('VSelect',VSelect);
-Vue.component('ClothFilter',ClothFilter);
+
 Vue.component('ButtonCar',ButtonCar);
 Vue.component('ButtonWishlist',ButtonWishlist);
 Vue.component('Carousel',Carousel);

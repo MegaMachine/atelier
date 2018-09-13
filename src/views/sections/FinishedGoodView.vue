@@ -12,15 +12,15 @@
               :perPage="1"
               :paginationEnabled="false">
               <slide :key="item" v-for="item in [1,2,3]">
-                <img :src="require('@/assets/img/models/1.png')" :alt="good[0].good_name.ua">
+                <img :src="require('@/assets/img/models/1.png')" :alt="good.good_name.ua">
               </slide>
               <p></p>
             </carousel>
             <div class="finished-good-view__info__text">
-              <h2>{{good[0].good_name.ua}}</h2>
+              <h2>{{good.good_name.ua}}</h2>
               <div class="finished-good-view__info__size">
-                <label :key="size.id_size" v-for="size in good[0].size">
-                  <input v-model="goodOptions.size" :value="size.id_size" name="good-size" type="radio">
+                <label :key="size.id_size" v-for="size in good.size">
+                  <input v-model="goodOptions.id_size" :value="size.id_size" name="good-size" type="radio">
                   <span>{{size.size}}</span>
                   </label>
               </div>
@@ -28,7 +28,7 @@
           </div>
           <div>
             <div class="finished-good-view__info__desc">
-              <p>{{good[0].description}}</p>
+              <p>{{good.description}}</p>
               </div>
           </div>
         </div>
@@ -36,11 +36,11 @@
       <div class="col-12 col-md-6 right-side">
          <div class="finished-good-view__cloth">
            <div class="finished-good-view__cloth__img">
-              <img :src="require('@/assets/img/models/1.png')" :alt="good[0].good_name.ua">
+              <img :src="require('@/assets/img/models/1.png')" :alt="good.good_name.ua">
             </div>
             <div class="finished-good-view__info__desc">
-              <p>{{good[0].description}}</p>
-              <span>{{good[0].price}} грн</span>
+              <p>{{good.description}}</p>
+              <span>{{good.price}} грн</span>
               </div>
         </div>
         <div class="finished-good-view__buttons">
@@ -63,20 +63,20 @@ import cloths from './../../data/cloth.js';
         cloth: [],
         goods,
         goodOptions:{
-          id_good:this.$route.params.id,
-          size:null,
+          id_model:null,
+          id_size:null,
+          id_cloth:null,
+          id_good:Number(this.$route.params.id)
         }
       }
     },
     created(){
       var that = this;
-      this.good = _.filter(goods,{ id_good:this.$route.params.id });
-      this.good[0].material.map(function(item){
+      this.good = _.find(goods,{ id_good:Number(this.$route.params.id) });
+      this.good.material.map(function(item){
         that.cloth.push(_.find(cloths, {id_material: item.id_material}))  
-      })
-      //this.cloth = 
-      //_.filter(cloths,{ id_material: this.good[0].material.id_material });
-      console.log(this.cloth)
+      });
+      this.goodOptions.id_model = this.good.id_model;
     }
   }
 </script>

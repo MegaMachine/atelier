@@ -2,7 +2,7 @@
   <section-wrap sectionName="finished-goods" sectionTitle="Готові Вироби" sectionContainer="container">
     <div class="row">
       <div class="col-md-3">
-        <app-filter :size="filter.size" :material="filter.material" :category="filter.category" @filter-result="takeFilterResult"></app-filter>
+        <app-filter-goods :size="filter.size" :material="filter.material" :category="filter.category" @filter-result="takeFilterResult"></app-filter-goods>
       </div>
       <div class="col-md-8 items">
         <div class="finished-goods__item__wrap" :key="item.id_good" v-for="(item) in viewGoods">

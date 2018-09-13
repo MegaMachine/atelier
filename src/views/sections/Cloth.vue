@@ -2,10 +2,10 @@
  <section-wrap sectionName="cloth" sectionTitle="Тканини" sectionContainer="container">
     <div class="row">
       <div class="col-md-3">
-        <cloth-filter
+        <app-filter-cloths
         :category="filter.category"
         :composition="filter.composition"
-        @filter-result="takeFilterResult"></cloth-filter>
+        @filter-result="takeFilterResult"></app-filter-cloths>
       </div>
       <div class="col-md-8 items">
         <div class="cloth__item__wrap" :key="item.id_material" v-for="item in viewCloth">

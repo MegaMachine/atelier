@@ -2,7 +2,7 @@
   <section-wrap sectionName="models" sectionTitle="Моделі" sectionContainer="container">
     <div class="row">
       <div class="col-md-3">
-        <app-filter :purpose="filter.purpose" :material="filter.material" :category="filter.category" @filter-result="takeFilterResult"></app-filter>
+        <app-filter-models :purpose="filter.purpose" :material="filter.material" :category="filter.category" @filter-result="takeFilterResult"></app-filter-models>
       </div>
       <div class="col-md-8 items">
         <div class="models__item__wrap" :key="item.id_model" v-for="(item) in viewModels">
@@ -75,12 +75,10 @@
     }
     &__item {
       width: 100%;
-      // padding: 10px 10px 0px;
       position:absolute;
       
       &__wrap {
         width: 33%;
-        // margin: 0 2.5% 5%;
         position: relative;
         height:300px;
       }
@@ -127,9 +125,6 @@
             font-size: 20px;
             color: $color-red;
             text-transform: uppercase;
-            // span {
-            //   color: $color-red;
-            // }
           }
         }
         &__text {
@@ -159,7 +154,6 @@
             color: white;
             text-transform: uppercase;
             text-align: center;
-            // background: linear-gradient(to right, #ff8486 37%, #ff9393 52%, #fff06d 87%);
             background: #1a1a1a;
           }
         }
