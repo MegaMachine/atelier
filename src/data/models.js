@@ -38,7 +38,7 @@ module.exports = [
     "burda_link": "https://burdastyle.ua/models/zhinocha-moda/sukni/suknya-vuzka-z-drapirovkoyu-na-lifi",
     "category": 3,
     "purpose": 3,
-    "contingent": 1,
+    "contingent": 2,
     "textile_spending": "2.1",
     "lining": false,
     "id_material": [

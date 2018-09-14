@@ -62,7 +62,7 @@ import filter from './../../data/filter.js';
           id_model:Number(this.$route.params.id),
           id_size:null,
           id_cloth:null,
-          id_good:true
+          // id_good:true
         }
       }
     },

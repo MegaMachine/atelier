@@ -16,7 +16,8 @@
                 <p>{{item.model_name.ua}}</p>
               </div>
               <div class="models__item__desc__price">
-                <img :src="require('@/assets/img/item/wallet.png')" alt="" class="item-icons">
+                <img :src="require('@/assets/img/filter/male3.png')" v-if="item.contingent === 1" alt="" class="item-icons">
+                <img :src="require('@/assets/img/filter/female3.png')" v-if="item.contingent === 2" alt="" class="item-icons">
                 <p>{{item.price}}
                   <span>grn</span>
                 </p>
