@@ -28,14 +28,14 @@
           <div class="cloth-view__models__item" :key="item.id_good" :value="item.id_good" v-for="item in goodsFilter">
 
             <div class="cloth-view__models__item__img">
-              <img :src="require('@/assets/img/models/1.png')" alt="">
+              <img :src="require('@/assets/img/cloth/1.png')" alt="">
             </div>
             <div class="cloth-view__models__item__size">
               <!-- <span :key="size" v-for="size in item.size">{{size.size}}</span> -->
-              <label :key="size.id_size" v-for="size in item.size">
+              <!-- <label :key="size.id_size" v-for="size in item.size">
                 <input v-model="clothOptions.id_size" :value="size.id_size" name="good-size" type="radio" @click="choiceGood">
                 <span>{{size.size}}</span>
-              </label>
+              </label> -->
             </div>
           </div>
         </div>

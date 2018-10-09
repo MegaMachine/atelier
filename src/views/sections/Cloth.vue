@@ -12,6 +12,7 @@
           <div class="cloth__item">
             <div class="cloth__item__img">
               <img :src="require('@/assets/img/cloth/1.png')" alt="model">
+              {{item.id_material}}
             </div>
             <div class="cloth__item__desc">
               <div class="cloth__item__desc__name">

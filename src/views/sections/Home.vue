@@ -37,9 +37,17 @@
 </template>
 
 <script>
+import axios from 'axios';
   export default {
     name: 'home',
-  
+    data(){
+
+    },
+    mounted() {
+      axios.get('https://142.93.105.95:8000/api/view/model/').then( response => { //https://api.coindesk.com/v1/bpi/currentprice.json 
+        console.log(response)
+      }).catch( error => console.log(error))
+    },
   }
 </script>
 

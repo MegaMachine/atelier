@@ -76,7 +76,9 @@ import cloths from './../../data/cloth.js';
       this.good.material.map(function(item){
         that.cloth.push(_.find(cloths, {id_material: item.id_material}))  
       });
+      console.log(this.good)
       this.goodOptions.id_model = this.good.id_model;
+      this.goodOptions.id_cloth = this.good.material.id_material;
     }
   }
 </script>

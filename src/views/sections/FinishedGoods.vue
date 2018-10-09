@@ -56,7 +56,7 @@
         this.viewGoods = obj;
       },
       hoverItemPadding(item){
-        console.log(item);
+        // console.log(item);
       }
     },
     created() {

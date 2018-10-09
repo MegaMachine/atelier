@@ -72,36 +72,25 @@
         viewWishlist: [],
       }
     },
-    created() {
+    created() { 
       this.takeItems();
       if(this.car) this.filterItems(this.car, this.viewCar);
       if(this.wishlist) this.filterItems(this.wishlist, this.viewWishlist);
-      
     },
     methods: {
-      takeItems(){
+      takeItems(){ 
         this.wishlist = JSON.parse(localStorage.getItem('wishlist'));
         this.car = JSON.parse(localStorage.getItem('car'));
       },
       filterItems(storageObj, viewArray) {
-        let that = this;
-        
+        let that = this;   
         storageObj.map(function (item1) {
-          // let findObj = {
-          //   id_model: item1.id_model,
-          //   material: [{
-          //     id_material: item1.id_cloth
-          //   }],
-          //   size: [{
-          //     id_size: item1.id_size
-          //   }]
-          // }
           let findInModel = that._.find(models,{id_model:item1.id_model});
           let findInCloth = that._.find(cloth,{id_material:item1.id_cloth});
           let findInSize = that._.find(filter.size,{id_size:item1.id_size});
 
           let supportObj = {};
-          console.log(findInModel)
+          console.log(item1.id_model)
           supportObj.name = findInModel.model_name.ua;
           supportObj.photo = findInModel.photos[0];
           supportObj.price = findInCloth.price;
