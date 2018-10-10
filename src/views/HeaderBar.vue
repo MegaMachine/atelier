@@ -2,12 +2,12 @@
   <header class="header">
     <div class="container">
       <div class="row">
-        <div class="col-2">
+        <div class="col-2 col-md-4 logo-wrap">
           <router-link tag="a" to="/" class="header__logo">
             <img src="./../assets/img/header/logo.png" alt="logo">
           </router-link>
         </div>
-        <div class="col-6">
+        <div class="col-6 d-lg-block nav-wrap">
           <nav class="header__nav">
             <router-link class="header__link" tag="a" to="/about"><span>про проект</span></router-link>
             <router-link class="header__link" tag="a" to="/contacts"><span>контакти</span></router-link>
@@ -30,8 +30,17 @@
   @import '../assets/scss/_variable.scss';
   .row {
     justify-content: space-between;
+    @media screen and (max-width:991px){
+      justify-content: center;
+    }
   }
-  
+  .logo-wrap{
+    display: flex;
+    justify-content: center;
+  }
+  .nav-wrap{
+    display: none;
+  }
   .header {
     padding: 20px 0;
     background: rgba(255, 255, 255, .4);
@@ -39,6 +48,10 @@
     position: fixed;
     width: 100%;
     z-index: 2;
+    @media screen and (max-width:768px) {
+      display: flex;
+      justify-content: flex-end;
+    }
     &__logo {
       display: block;
     }

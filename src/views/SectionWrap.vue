@@ -33,19 +33,25 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
  section.section-wrap{
   padding-top: 20vh;
   min-height: 100vh;
   height: 100%;
    /* width:100vw; */
    /* overflow: hidden; */
+   @media screen and (max-width:991px){
+     padding-top: 5vh;
+   }
  }
  .page-title{
   text-align: center;
   text-transform:uppercase;
   font-size:2rem;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
+  @media screen and (max-width:991px){
+     padding-top: 5vh;
+   }
  }
  
 </style>

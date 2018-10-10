@@ -1,3 +1,4 @@
+//^3.0.0-beta.15
 module.exports = [
   {
     "id_model": 1,

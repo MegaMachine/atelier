@@ -27,9 +27,13 @@ export default {
    top:15vh;
    left: 2vw;
    display: block;
+   z-index: 10;
    cursor:pointer;
    &:hover{
      transform: scale(1.1);
+   }
+   @media screen and (max-width:991px){
+       top: 1.7vh;
    }
  }
  a{

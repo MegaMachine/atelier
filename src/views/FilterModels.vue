@@ -102,11 +102,28 @@
     // position: fixed;
     box-shadow: 0 0 10px 0px rgba(0,0,0,.3);
     padding: 20px;
+    @media screen and (max-width:991px){
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
     &__item {
       align-items: center;
       display: flex;
       justify-content: space-between;
       margin-bottom: 10px;
+      @media screen and (max-width:991px){
+        width: 31%;
+        &:first-child{
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+      }
+      @media screen and (max-width:991px){
+        width: 100%;
+      }
       h2 {
         font-size: 1rem;
       }

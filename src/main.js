@@ -5,8 +5,8 @@ import router from './router'
 import store from './store'
 import BootstrapVue from 'bootstrap-vue'
 import VueLodash from 'vue-lodash'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
+// import axios from 'axios'
+// import VueAxios from 'vue-axios'
 
 
 //Components
@@ -46,7 +46,7 @@ Vue.component('Slide', Slide);
 Vue.use(VueLodash,'lodash');
 Vue.use(BootstrapVue);
 Vue.use(VueCarousel);
-Vue.use(VueAxios,axios);
+// Vue.use(VueAxios,axios);
 
 new Vue({
   router,
