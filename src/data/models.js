@@ -1,4 +1,3 @@
-//^3.0.0-beta.15
 module.exports = [
   {
     "id_model": 1,
@@ -21,7 +20,7 @@ module.exports = [
       3
     ],
     "photos": [
-      "/static/media/models/burdastyle_suknya_vuzkogo_kroyu_118_1_2018.jpg",
+      "http://www.rives-paris.com/wp-content/uploads/2016/02/rives-les-dandys-made-to-measure-paris-look-13.jpg",
       "/static/media/models/burdastyle_suknya_vuzkogo_kroyu_118_1_2018.png",
       "/static/media/models/burdastyle_suknya_vuzkogo_kroyu_118_1_2018_3.jpg",
       "/static/media/models/%D0%BF%D0%BB%D0%B0%D1%82%D1%82%D1%8F-%D0%BF%D1%80%D0%BE%D0%B7%D0%BE%D1%80%D0%B5-1_UywdkBK.png"
@@ -48,7 +47,7 @@ module.exports = [
       2
     ],
     "photos": [
-      "/static/media/models/burdastyle_suknya_vuzkogo_kroyu_118_1_2018.jpg",
+      "https://i1.adis.ws/i/boohooamplience/dzz82559_blush_xl?$product_page_main_magic_zoom$",
       "/static/media/models/burdastyle_suknya_vuzkogo_kroyu_118_1_2018.png",
       "/static/media/models/burdastyle_suknya_vuzkogo_kroyu_118_1_2018_3.jpg",
       "/static/media/models/%D0%BF%D0%BB%D0%B0%D1%82%D1%82%D1%8F-%D0%BF%D1%80%D0%BE%D0%B7%D0%BE%D1%80%D0%B5-1_UywdkBK.png"

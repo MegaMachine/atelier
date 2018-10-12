@@ -9,7 +9,7 @@
         <div class="models__item__wrap" :key="item.id_model" v-for="(item) in viewModels">
           <div class="models__item">
             <div class="models__item__img">
-              <img :src="require('@/assets/img/models/1.png')" :alt="item.model_name.ua">
+              <img :src="item.photos[0]" :alt="item.model_name.ua">
             </div>
             <div class="models__item__desc">
               <div class="models__item__desc__name">

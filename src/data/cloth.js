@@ -5,6 +5,8 @@ module.exports = [
     "photo":"@/../../assets/img/cloth/1.png",
     "description": "Ddddddddddasdasdddddddddddddddasdasdas",
     "price": 800,
+    "width": "1.50",
+    "remain": "0.00",
   },
   {
     "id_material": 2,
@@ -12,6 +14,8 @@ module.exports = [
     "photo":"@/../../assets/img/cloth/1.png",
     "description": "Ddddddddddasdasdddddddddddddddasdasdas",
     "price": 900,
+    "width": "1.50",
+    "remain": "0.00",
   },
   {
     "id_material": 3,
@@ -19,6 +23,8 @@ module.exports = [
     "photo":"@/../../assets/img/cloth/1.png",
     "description": "Ddddddddddasdasdddddddddddddddasdasdas",
     "price": 1000,
+    "width": "1.50",
+    "remain": "0.00",
   },
   {
     "id_material": 4,
@@ -27,6 +33,8 @@ module.exports = [
     "description": "Ddddddddddasdasdddddddddddddddasdasdas",
     "price": 1200,
     "id_category": 1,
+    "width": "1.50",
+    "remain": "0.00",
   },
   {
     "id_material": 5,
@@ -35,6 +43,8 @@ module.exports = [
     "description": "Ddddddddddasdasdddddddddddddddasdasdas",
     "price": 1500,
     "id_category": 1,
-    "id_composition":1
+    "id_composition": 1,
+    "width": "1.50",
+    "remain": "0.00",
   } 
 ];
