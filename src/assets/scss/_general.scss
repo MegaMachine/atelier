@@ -61,6 +61,8 @@ body,html,#app,main,section{
  }
 
 .v-select{
+  width: 100%;
+  max-width: 300px;
   .dropdown-menu{
     border: 1px solid rgba(60,60,60,.26) !important;
     background: #efe9dd  !important;
@@ -69,6 +71,16 @@ body,html,#app,main,section{
     overflow-y: auto !important;
     li{
       background:transparent !important;
+      &.highlight{
+        background: black !important;
+        color: #fff; 
+      }
+      a{
+        font-size: 16px ;
+        @media screen and (max-width: 500px){
+          font-size: 14px ;
+        }
+      }
     }
     & > .highlight{
       &:hover,&:focus,&.active{

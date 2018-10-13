@@ -1,18 +1,17 @@
 <template>
  <section-wrap sectionName="cloth" sectionTitle="Тканини" sectionContainer="container">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-xl-4 col-lg-4 col-md-12">
         <app-filter-cloths
         :category="filter.category"
         :composition="filter.composition"
         @filter-result="takeFilterResult"></app-filter-cloths>
       </div>
-      <div class="col-md-8 items">
+      <div class="col-xl-8 col-lg-8 col-md-12 items">
         <div class="cloth__item__wrap" :key="item.id_material" v-for="item in viewCloth">
           <div class="cloth__item">
             <div class="cloth__item__img">
               <img :src="require('@/assets/img/cloth/1.png')" alt="model">
-              {{item.id_material}}
             </div>
             <div class="cloth__item__desc">
               <div class="cloth__item__desc__name">
@@ -70,65 +69,106 @@ import filter from "./../../data/filter.js";
       justify-content: flex-start;
       flex-wrap: wrap;
       padding-bottom: 350px;
+      @media screen and (max-width: 991px) {
+        margin-top: 30px;
+      }
     }
     .item-icons{
       width: 24px;
       height:24px;
       margin-right: 10px;
     }
-    &__item {
+
+       &__item {
       width: 100%;
-      &__wrap {
-        width: 33%;
-        // margin: 0 2.5% 5%;
-        position: relative;
-        height:175px;
+      position: absolute;
+
+      @media screen and (max-width: 768px) {
+        position: static;
       }
-      // padding: 10px 10px 0px;
-       &__img {
+
+      &__wrap {
+        width: 33.33333333%;
+        position: relative;
+        height: 175px;
+
+        @media screen and (max-width: 768px) {
+          height: auto;
+          width: 50%;
+          margin-bottom: 20px;
+        }
+
+        @media screen and (max-width:450px) {
+          width: 100%;
+        }
+      }
+
+      &__img {
         width: 100%;
         position: relative;
         height: 175px;
         overflow: hidden;
+
+        @media screen and (max-width: 576px) {
+          height: auto;
+        }
+
         img {
           width: 100%;
-          position : absolute;
+          height: 100%;
+          position: absolute;
           top: 50%;
           left: 50%;
           transform: translateY(-50%) translateX(-50%) scale(1);
           transform-origin: center;
           transition: .5s transform;
+
+          @media screen and (max-width: 576px) {
+            position: static;
+            transform: translateY(0%) translateX(0%) scale(1);
+          }
         }
       }
+
       &__desc {
         padding: 10px 10px 30px;
         display: none;
-        &>div{
-          display:flex;
+
+        @media screen and (max-width: 768px) {
+          display: block
+        }
+
+        &>div {
+          display: flex;
           align-items: center;
           margin-bottom: 10px;
-          p{
+
+          p {
             text-transform: uppercase;
             font-size: 14px;
-            color:#1a1a1a;
+            color: #1a1a1a;
             margin-bottom: 0px;
           }
         }
-        &__name{
-          p{
-            margin-bottom: 5px;
+
+        &__name {
+          margin-bottom: 5px;
+
+          p {
+            margin-bottom: 0px;
+            text-transform: uppercase;
+            font-size: 16px;
           }
         }
+
         &__price {
           p {
             font-size: 20px;
             color: $color-red;
             text-transform: uppercase;
-            // span {
-            //   color: $color-red;
-            // }
           }
         }
+
         &__text {
           p {
             white-space: nowrap;
@@ -137,12 +177,15 @@ import filter from "./../../data/filter.js";
             text-overflow: ellipsis;
           }
         }
+
         &__size {
           display: none;
+
           span {
-            padding: 0 10px;
+            padding: 0 10px 0 0;
           }
         }
+
         &__detail {
           display: none;
           position: absolute;
@@ -150,19 +193,19 @@ import filter from "./../../data/filter.js";
           left: 0;
           width: 100%;
           margin-bottom: 0px !important;
+
           a {
             display: block;
             width: 100%;
             color: white;
             text-transform: uppercase;
             text-align: center;
-            // background: linear-gradient(to right, #ff8486 37%, #ff9393 52%, #fff06d 87%);
             background: #1a1a1a;
           }
         }
       }
+
       &:hover {
-        
         z-index: 1;
         box-shadow: 0 0 10px 0px rgba(0, 0, 0, .3);
         background-color: #f4f0e8;
@@ -171,23 +214,38 @@ import filter from "./../../data/filter.js";
         top: 0;
         left: 0;
         z-index: 1;
-        .cloth__item__img{
-          img{
+
+        @media screen and (max-width: 768px) {
+          position: static;
+        }
+
+        .cloth__item__img {
+          img {
             transform: translateY(-50%) translateX(-50%) scale(1.2);
+
+            @media screen and (max-width: 576px) {
+              position: static;
+              transform: translateY(0%) translateX(0%) scale(1);
+            }
           }
         }
+
         .cloth__item__desc {
           display: block;
+
           &__text {
             p {
               white-space: normal;
               overflow: visible;
             }
           }
+
           &__size {
             display: block;
+
             span {}
           }
+
           &__detail {
             display: block;
           }

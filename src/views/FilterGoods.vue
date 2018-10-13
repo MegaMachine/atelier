@@ -13,7 +13,7 @@
         </label>
       </div>
     </div>
-    <!-- <div class="filter__item">
+    <div class="filter__item">
       <h2>Сезон</h2>
       <div>
         <label class="filter__item__sun">
@@ -29,70 +29,81 @@
           <span></span>
         </label>
       </div>
-    </div> -->
-    <div class="filter__item select">
+    </div>
+    <!-- <div class="filter__item select">
       <h2>Категорія</h2>
       <v-select v-model="filterResult.selects.category"  :options="selectOptionsCategory"></v-select>
-    </div>
+    </div> -->
     <div class="filter__item select">
       <h2>Тканина</h2>
       <v-select v-model="filterResult.selects.material" :options="selectOptionsMaterial"></v-select>
     </div>
-    <div class="filter__item select">
-      <h2 @click="filterItem">Призначення</h2>
+    <!-- <div class="filter__item select">
+      <h2>Призначення</h2>
       <v-select v-model="filterResult.selects.purpose"  :options="selectOptionsPurpose"></v-select>
+    </div> -->
+    <div class="filter__item select">
+      <h2>Призначення</h2>
+      <v-select v-model="filterResult.selects.size"  :options="selectOptionsSize"></v-select>
     </div>
     <button @click.prevent="sendData">Фільтрувати</button>
   </div>
 </template>
 
 <script>
-  import models from './../data/models.js';
+  import goods from './../data/goods.js';
   export default {
     name: "app-filter",
     data() {
       return {
-        models,
-        viewModels: [],
+        goods,
+        viewGoods: [],
         filterResult: {
           inputs:{
-            contingent : null
+            contingent : null,
+            season: null
           },
           selects:{
-            category : null,
-            purpose : null,
+            // category : null,
+            // purpose : null,
             material : null,
+            // contingent : null,
+            size: null
           }
         }
       }
     },
     props: {
       material: Array,
-      purpose: Array,
-      category: Array
+      // purpose: Array,
+      // category: Array,
+      size: Array
     },
     methods: {
       filterItem() {  
         let obj = {
-          contingent : this.filterResult.inputs.contingent ? Number(this.filterResult.inputs.contingent) : null,
-          category : this.filterResult.selects.category ? Number(this.filterResult.selects.category.value) : null,
-          purpose : this.filterResult.selects.purpose ? Number(this.filterResult.selects.purpose.value) : null,
-          id_material : this.filterResult.selects.material ? [Number(this.filterResult.selects.material.value)] : null 
+          id_season: this.filterResult.inputs.season ? Number(this.filterResult.inputs.season) : null,
+          id_contingent : this.filterResult.inputs.contingent ? Number(this.filterResult.inputs.contingent) : null,
+          // id_category : this.filterResult.selects.category ? Number(this.filterResult.selects.category.value) : null,
+          // purpose : this.filterResult.selects.purpose ? Number(this.filterResult.selects.purpose.value) : null,
+          material : this.filterResult.selects.material ? { id_material : Number(this.filterResult.selects.material.value) } : null ,
+          size :  this.filterResult.selects.size ? { id_size: Number(this.filterResult.selects.size.value) } :  null 
         };
         let findObj = _.pickBy(obj, _.identity);
-        this.viewModels = _.filter(this.models, findObj);
-        console.log(obj)
+        this.viewGoods = _.filter(this.goods, findObj);
+        console.log('findObj',findObj)
+        console.log('viewGoods',this.viewGoods)
       },
       sendData(){
         this.filterItem();
-        this.$emit('filter-result', this.viewModels)
+        this.$emit('filter-result', this.viewGoods)
       }
     },
     computed: {
-      selectOptionsPurpose() {
-        return this.purpose.map(g => ({
-          label: g.purpose_name.toString(),
-          value: g.id_purpose
+      selectOptionsSize() {
+        return this.size.map(g => ({
+          label: g.size.toString(),
+          value: g.id_size
         }))
       },
       selectOptionsMaterial() {
@@ -101,15 +112,6 @@
           value: g.id_material
         }))
       },
-      selectOptionsCategory() {
-        return this.category.map(g => ({
-          label: g.category_name.toString(),
-          value: g.id_category
-        }))
-      }
-    },
-    mounted(){
-      console.log(this.filterResult)
     }
   };
 </script>
