@@ -5,7 +5,8 @@
         <app-filter-models :purpose="filter.purpose" :material="filter.material" :category="filter.category"
           @filter-result="takeFilterResult"></app-filter-models>
       </div>
-      <div class="col-xl-8 col-lg-8 col-md-12 items">
+      <div class="col-xl-8 col-lg-8 col-md-12 ">
+        <div class="items">
         <div class="models__item__wrap" :key="item.id_model" v-for="(item) in viewModels">
           <div class="models__item">
             <div class="models__item__img">
@@ -33,6 +34,19 @@
             </div>
           </div>
         </div>
+        </div>
+
+        <paginate
+          v-model="pagination.page"
+          :page-count="pagination.pageQuantity"
+          :click-handler="clickCallback"
+          :page-range="3"
+          :margin-pages="2"
+          :prev-text="'Prev'"
+          :next-text="'Next'"
+          :break-view-class="'break'"
+          :break-view-link-class="'break-view-link-class'"
+          :container-class="'pagination'"></paginate>
       </div>
     </div>
   </section-wrap>
@@ -48,15 +62,27 @@
         viewModels: null,
         models,
         filter,
+        pagination:{
+          pageView: 9,
+          page:1,
+          startIndex:0,
+          pageQuantity:null,      
+          endIndex:null,
+        },
       }
     },
     methods: {
       takeFilterResult(obj) {
         this.viewModels = obj;
       },
+      clickCallback(pagination){
+        console.log(pagination)
+      }
     },
     created() {
       this.viewModels = this.models;
+      this.pagination.pageQuantity = models.length / this.pagination.pageView 
+      this.endIndex = this.pagination.pageView - 1;
     }
   }
 

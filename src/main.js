@@ -5,8 +5,10 @@ import router from './router'
 import store from './store'
 import BootstrapVue from 'bootstrap-vue'
 import VueLodash from 'vue-lodash'
+import Paginate from 'vuejs-paginate'
 // import axios from 'axios'
 // import VueAxios from 'vue-axios'
+
 
 
 //Components
@@ -36,11 +38,11 @@ Vue.component('AppFilterModels', AppFilterModels);
 Vue.component('AppFilterGoods', AppFilterGoods);
 Vue.component('AppFilterCloths',AppFilterCloths);
 Vue.component('VSelect',VSelect);
-
 Vue.component('ButtonCar',ButtonCar);
 Vue.component('ButtonWishlist',ButtonWishlist);
 Vue.component('Carousel',Carousel);
 Vue.component('Slide', Slide);
+Vue.component('paginate', Paginate)
 
 //Use modules
 Vue.use(VueLodash,'lodash');

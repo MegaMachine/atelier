@@ -1,37 +1,45 @@
 <template>
   <section-wrap sectionName="private-cabinet" sectionTitle="Персональний Кабінет">
     <div class="row flex-box">
-      <div class="col-12 col-md-4">
+      <div class="col-md-12 col-lg-6">
         <div class="private-cabinet__block">
           <div class="private-cabinet__block__title">
             <img src="./../../assets/img/private-cabinet/order.png" alt="">
             <h2>МОЇ ЗАМОВЛЕННЯ</h2>
           </div>
           <div class="private-cabinet__block__content">
+            <div v-if="!viewCar.length">
+              У вас пустий кошик
+            </div>
             <div :key="index" :data-index="index" class="private-cabinet__block__content__item" v-for="(item,index) in viewCar">
-              <button class="delete-item" @click="deleteCar">x</button>
+             
               <div><img :src="require('@/assets/img/models/1.png')" alt=""></div>
+               <button class="delete-item" @click="deleteCar">x</button>
               <div>
                 <div><img :src="require('@/assets/img/item/dress.png')" alt="" class="item-icons"><h2>{{item.name}}</h2></div>
                 <div><img :src="require('@/assets/img/item/cloth.png')" alt="" class="item-icons"><p>{{item.cloth}}</p></div>
                 <div><img :src="require('@/assets/img/item/measuring-tape.png')" alt="" class="item-icons"><span>{{item.size}}</span></div>
                 <div><img :src="require('@/assets/img/item/wallet.png')" alt="" class="item-icons"><span>{{item.price}} грн.</span></div>
-                
+                <button class="to-car" @click="toCar">Замовити</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-4">
+      <div class="col-md-12 col-lg-6">
         <div class="private-cabinet__block">
           <div class="private-cabinet__block__title">
             <img src="./../../assets/img/private-cabinet/best.png" alt="">
             <h2>УЛЮБЛЕНІ</h2>
           </div>
           <div class="private-cabinet__block__content">
+            <div v-if="!viewWishlist.length">
+              Ваш список бажань пустий
+            </div>
             <div :key="index" :data-index="index" class="private-cabinet__block__content__item" v-for="(item,index) in viewWishlist">
-              <button class="delete-item" @click="deleteWishList">x</button>
+              
               <div><img :src="require('@/assets/img/models/1.png')" alt=""></div>
+              <button class="delete-item" @click="deleteWishList">x</button>
               <div>
                 <div><img :src="require('@/assets/img/item/dress.png')" alt="" class="item-icons"><h2>{{item.name}}</h2></div>
                 <div><img :src="require('@/assets/img/item/cloth.png')" alt="" class="item-icons"><p>{{item.cloth}}</p></div>
@@ -76,6 +84,7 @@
       this.takeItems();
       if(this.car) this.filterItems(this.car, this.viewCar);
       if(this.wishlist) this.filterItems(this.wishlist, this.viewWishlist);
+      console.log( this.viewCar, this.viewWishlist)
     },
     methods: {
       takeItems(){ 
@@ -152,10 +161,14 @@
       padding: 30px 15px;
       background: rgba(255, 255, 255, .3);
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, .3);
+      margin-bottom: 30px;
       &__content{
         &__item{
           display:flex;
           background: #efe9dd;
+          @media screen and (max-width:500px){
+            flex-direction: column;
+          }
           &>div:last-child{
             padding: 15px;
           }
@@ -166,11 +179,13 @@
         margin-bottom: 50px;
         img {
           margin-bottom: 15px;
+         
         }
 
         h2 {
           font-family: $font-a;
           font-size: 1.5rem;
+         
         }
       }
       &__content{
@@ -179,6 +194,9 @@
           margin-bottom: 20px;
           width: 100%;
           position: relative;
+          img{
+            height: 100%;
+          }
           .delete-item{
             position: absolute;
             right:0;
@@ -195,6 +213,9 @@
           }
           &>div:first-child{
             width: 40%;
+            @media screen and (max-width:500px){
+              width: 100%;
+            }
             img{
               width: 100%;
             }
@@ -207,6 +228,9 @@
             flex-direction: column;
             padding: 15px;
             width: 60%;
+            @media screen and (max-width:500px){
+              width: 100%;
+            }
             p,h2, span{
               margin: 0;
              
@@ -218,7 +242,8 @@
             }
             h2{
               font-family: $font-a;
-              font-size: 20px;
+              font-size: 16px;
+             
             }
           }
         }

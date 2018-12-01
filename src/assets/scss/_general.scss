@@ -131,3 +131,58 @@ body,html,#app,main,section{
   background: #5897fb;
   color: #fff;
 }
+
+
+.pagination{
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  li{
+    display: block;
+    width: 35px;
+    height: 35px;
+    border:2px solid rgba(60,60,60,.5);
+    border-radius: 4px;
+    margin-right: 5px;
+    a{
+      width:100%;
+      height: 100%;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color:rgba(60,60,60,.5) !important;
+      border:none;
+      float: none;
+      margin-left: 0;
+      outline: none !important;
+      background: transparent;
+      border-radius: 0 !important;
+    }
+    .break,.break-view-link-class{
+      color: rgba(60,60,60,.5);
+      background: transparent;
+      outline: none;
+    }
+    &:first-child,&:last-child{
+      width: 50px;
+    }
+    &.active,&:hover,&:focus,&:active{
+      background: rgba(60,60,60,.5);
+      color:white;
+      outline: none !important;
+      a{
+        font-size: 20px;
+        z-index: 3;
+        color: rgb(255, 255, 255) !important;
+        cursor: pointer;
+        background-color: rgba(60,60,60,.5) !important;
+        border:none !important;
+        outline: none !important;
+      }
+    }
+    &.disabled{
+      visibility: hidden;
+    }
+  }
+}
